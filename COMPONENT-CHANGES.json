@@ -1,0 +1,562 @@
+{
+  "toolkit-tools": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:decide-agent": {
+    "0.5.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.5.1": {
+      "change": "patch",
+      "reason": "Adapt the accepted completion-preservation guidance to the preceding release. Preserve baseline authority and validation behavior."
+    },
+    "0.5.2": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:decide": {
+    "1.4.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.4.1": {
+      "change": "patch",
+      "reason": "Adapt the accepted completion-preservation guidance to the preceding release. Preserve baseline authority and validation behavior."
+    },
+    "1.5.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/alternatives/strategy-table.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/consequences/decision-research.md": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/consequences/pugh-matrix.md": {
+    "1.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.2.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/consequences/value-of-information.md": {
+    "1.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "specification": {
+    "0.2.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.2.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/tradeoffs/dominance-and-pruning.md": {
+    "1.0.1": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/tradeoffs/even-swaps.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/references/tradeoffs/weight-and-rate.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "removed": {
+      "reason": "Excluded from this provisional B profile; no permanent adoption or retirement."
+    }
+  },
+  "procedure:skills/decide/steps/01-frame.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/02-objectives.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/03-alternatives.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/04-consequences.md": {
+    "1.2.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.3.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "1.3.1": {
+      "change": "patch",
+      "reason": "Route unresolved ordinal magnitude to the shared directional bounds."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/05-tradeoffs.md": {
+    "1.0.1": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/06-recommendation.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/07-dq-assessment.md": {
+    "2.0.1": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "2.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/decide/steps/08-record.md": {
+    "2.0.2": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "2.0.3": {
+      "change": "patch",
+      "reason": "Adapt the accepted completion-preservation guidance to the preceding release. Preserve baseline authority and validation behavior."
+    },
+    "2.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:decision-research": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:decision-template": {
+    "0.2.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.2.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:dq-check": {
+    "1.0.1": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "1.1.1": {
+      "change": "patch",
+      "reason": "Extract table objectives and review conditions; distinguish compact consequence matrices from their evidence tables."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/dq-check/instrument/elements.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "procedure:skills/dq-check/instrument/scoring-rule.md": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:frame": {
+    "1.0.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "1.1.0": {
+      "change": "feature",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:pugh-matrix": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "0.1.2": {
+      "change": "patch",
+      "reason": "Keep supported consequence direction visible without inventing a central ordinal score."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:review": {
+    "0.1.1": {
+      "change": "initial",
+      "reason": "Baseline adoption from preview.2; preserves existing source version where declared. Unversioned components start at 0.1.0."
+    },
+    "0.1.2": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "distribution": {
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Add explicit component versions, consistency checks, and changelog metadata to release packages. Record format and coaching behavior remain unchanged."
+    },
+    "0.1.2": {
+      "change": "patch",
+      "reason": "Include a readable changelog in each candidate and package. Show the baseline comparison and recorded version history."
+    },
+    "0.1.3": {
+      "change": "feature",
+      "reason": "Add the core glossary and a generated package contents summary. Include the authorship notice in every format."
+    },
+    "0.1.4": {
+      "change": "feature",
+      "reason": "Add the selected Apache 2.0 licence to every package. Preserve attribution and the publication hold pending permission for Laura's adapted material."
+    },
+    "0.1.5": {
+      "change": "feature",
+      "reason": "Add decision search and summary, adapt completion preservation, and prepare a curated public candidate with portable documentation and explicit sharing scope."
+    },
+    "0.2.0": {
+      "change": "breaking",
+      "reason": "Provisional B public profile excludes earlier search/summary and withdrawn weighted-rating components, adds portable lifecycle demonstration, and reconciles release lineage. This is not D5 selection or publication."
+    },
+    "0.2.1": {
+      "change": "patch",
+      "reason": "Reject renamed private origins in the provisional profile and include its loader in the packaging digest. The comparison candidate was successfully built but returned by source-boundary review."
+    },
+    "0.2.2": {
+      "change": "patch",
+      "reason": "Include assessed consequence direction and record extraction corrections. Preserve provisional scope and publication hold."
+    },
+    "0.2.3": {
+      "change": "feature",
+      "reason": "Prepare an actual file-based workstream and conditional packaged entry for trial. Human initiation, authority and publication limits remain."
+    },
+    "0.2.4": {
+      "change": "patch",
+      "reason": "Align README and installation instructions with the included ten procedures, lifecycle resources and manually resumed file workflow. No code or capability change."
+    },
+    "0.2.5": {
+      "change": "patch",
+      "reason": "Replace stale adapted-material permission holds with approval reported by David. Preserve attribution, unchanged LICENSE terms and separate public-release authority; original-prompt and third-party rights are not expanded."
+    },
+    "0.3.0": {
+      "change": "breaking",
+      "reason": "Replace the packaged skill chain and legacy record format with one standalone Perspicuity skill and one evolving Markdown work record. Preserve earlier candidates separately. Correct the browser upload layout by placing its build manifest inside the sole perspicuity directory."
+    },
+    "0.3.1": {
+      "change": "patch",
+      "reason": "Correct consequence scoring after the browser trial. Keep each score on its own objective and reserve compensation across objectives for tradeoffs."
+    },
+    "0.4.0": {
+      "change": "breaking",
+      "reason": "Replace mandatory analysis methods and ordinal tables with required record criteria. Let the agent choose suitable methods, scores, weights, and presentation for the case."
+    },
+    "0.4.1": {
+      "change": "patch",
+      "reason": "Clarify preview installation, attribution and evidence limits in package documentation. Remove internal publication workflow from user-facing descriptions. Keep skill 0.2.0 and its five authored files unchanged."
+    },
+    "0.4.2": {
+      "change": "patch",
+      "reason": "Add the preview download destination and distinguish the three release assets. Document local Codex installation, Linux verification and complete-folder installation for other compatible hosts. Keep skill 0.2.0 unchanged."
+    }
+  },
+  "glossary": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Add the completed core terminology from CONTEXT.md. Start independent glossary version tracking."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "0.1.2": {
+      "change": "feature",
+      "reason": "Define the single-skill workflow and evolving work record while preserving historical terminology."
+    },
+    "0.1.3": {
+      "change": "patch",
+      "reason": "Clarify that record criteria define the required account while analysis methods and presentation depend on the case."
+    }
+  },
+  "licensing": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Track the Apache 2.0 licence and authorship notice as committed source files."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    }
+  },
+  "skill:decision-search": {
+    "0.1.1": {
+      "change": "initial",
+      "reason": "Include the accepted implementation and its portable dependencies. Retain private verification records outside the distribution."
+    },
+    "removed": {
+      "reason": "Excluded from this provisional B profile; no permanent adoption or retirement."
+    }
+  },
+  "skill:decision-summary": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Include the accepted implementation and its portable dependencies. Retain private verification records outside the distribution."
+    },
+    "removed": {
+      "reason": "Excluded from this provisional B profile; no permanent adoption or retirement."
+    }
+  },
+  "decision-summary-runtime": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Include the accepted implementation and its portable dependencies. Retain private verification records outside the distribution."
+    },
+    "removed": {
+      "reason": "Excluded from this provisional B profile; no permanent adoption or retirement."
+    }
+  },
+  "lifecycle-demo": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Aggregate assessed source and public adaptation changes in this provisional profile. Preserve private source versions through exact text-edit provenance."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Route orientation to the included portable work procedures."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:initiative": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Add assessed portable procedure under the explicit file-based convention; no background service."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:implement": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Add assessed portable procedure under the explicit file-based convention; no background service."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "portable-workflow": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Add receiving-file convention, benefit template, packet guidance and starting route."
+    },
+    "removed": {
+      "change": "removed",
+      "reason": "Exclude this legacy component from the standalone Perspicuity candidate. Earlier candidates and toolkit source retain it."
+    }
+  },
+  "skill:perspicuity": {
+    "0.1.0": {
+      "change": "initial",
+      "reason": "Introduce one entrypoint for a person or delegated agent through preparation, commitment, work, and review, with a template and fictional pipeline example."
+    },
+    "0.1.1": {
+      "change": "patch",
+      "reason": "Require each consequence score to use its own objective scale. Mark missing magnitudes unknown and assess compensation across objectives only in tradeoffs. Update template and example version headers."
+    },
+    "0.2.0": {
+      "change": "breaking",
+      "reason": "Make PrOACT, ordinal scoring, consequence tables, and weights optional. Preserve required decision and work-record criteria while allowing the agent to choose how to satisfy them."
+    }
+  }
+}

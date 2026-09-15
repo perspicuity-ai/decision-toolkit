@@ -1,0 +1,33 @@
+{
+  "components": {
+    "glossary": {
+      "files": {
+        "CONTEXT.md": "85b02347b2fbe2da24c224b235feb26a9070548f274c457e5652f2f2b0987773"
+      },
+      "kind": "reference",
+      "version": "0.1.3"
+    },
+    "licensing": {
+      "files": {
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      "kind": "documentation",
+      "version": "0.1.1"
+    },
+    "skill:perspicuity": {
+      "files": {
+        "skills/perspicuity/SKILL.md": "88f7728ae5e6d99793bcd29f61bd1b3991246c83e2e053157c8b5b19173e7e17",
+        "skills/perspicuity/assets/record-template.md": "b11bbfc8b28232dcc8190c7c853d3be11196f11ac35eb268a0bccfc9738b403e",
+        "skills/perspicuity/examples/pipeline.md": "4a4dac2c9ed2282547c6ca8777eab76412fbe494928a53e25505164b894f29c1",
+        "skills/perspicuity/references/analysis.md": "f2e03dc4a6152f249507ca77b1316511917c908cd0c9e4513783f091b10e2d2f",
+        "skills/perspicuity/references/record.md": "36d0d592e031de4ec9c104619a809f4b0fbf1e62abb15646491f41e347b743b3"
+      },
+      "kind": "skill",
+      "version": "0.2.0"
+    }
+  },
+  "distribution": "0.4.2",
+  "layout": "standalone-perspicuity",
+  "packaging_sha256": "b08ecafbd62f399e963e97db55816641851cc65ea2312a3b7e23c3a8da0c1ba2",
+  "record_format": "perspicuity-work/1"
+}

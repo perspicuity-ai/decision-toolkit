@@ -1,0 +1,180 @@
+{
+  "version": "0.4.2-preview.1",
+  "files": [
+    {
+      "path": "BUILD-MANIFEST.json",
+      "type": "file",
+      "executable": false,
+      "sha256": "e48452595d9ad4ac4b996ba1ae1ae9e8dc9896358d7e55c3bd43f7481ce44cdf",
+      "bytes": 2526
+    },
+    {
+      "path": "CHANGELOG.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "1bc350e81f92d2321a59bf44a80afbecaf3cd3ea6a000e7c8c05d8e98a515ca8",
+      "bytes": 20891
+    },
+    {
+      "path": "COMPONENT-CHANGES.json",
+      "type": "file",
+      "executable": false,
+      "sha256": "d92a2bb95f588942ffbbf16fe5b6b53a4dc8d5347eaec4d56fe126a27ae3cdbe",
+      "bytes": 26047
+    },
+    {
+      "path": "COMPONENT-VERSIONS.json",
+      "type": "file",
+      "executable": false,
+      "sha256": "de95db61a9e2c8480b5b5bd1209824f60a3fe8263cfc842237fc7561655dabb9",
+      "bytes": 1304
+    },
+    {
+      "path": "CONTEXT.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "85b02347b2fbe2da24c224b235feb26a9070548f274c457e5652f2f2b0987773",
+      "bytes": 2880
+    },
+    {
+      "path": "INSTALL.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "aff6edf376b2b934d0259f50b05eda75254ca7b97378d69c94b8abdcb3cf33e3",
+      "bytes": 3191
+    },
+    {
+      "path": "LICENSE",
+      "type": "file",
+      "executable": false,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "NOTICE.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "58d931c3293b83c80df10df80dff87584ef1ab7d075722c4834bfc0a8e066099",
+      "bytes": 816
+    },
+    {
+      "path": "PACKAGE-CONTENTS.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "1f0becaa473f94012e315af071edb60e294bb90a09ed514a632a9503a5b2f831",
+      "bytes": 2293
+    },
+    {
+      "path": "README.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "6431aa552e963947e0ac519b8513c7d38f8bfb597fc7d9600f57be78add73b8b",
+      "bytes": 2591
+    },
+    {
+      "path": "VERSION",
+      "type": "file",
+      "executable": false,
+      "sha256": "6a05bc44e69e3eb194b84b006bed9992ef311e92a4d0ed365258dc1036b7523b",
+      "bytes": 16
+    },
+    {
+      "path": "skills/perspicuity/CHANGELOG.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "1bc350e81f92d2321a59bf44a80afbecaf3cd3ea6a000e7c8c05d8e98a515ca8",
+      "bytes": 20891
+    },
+    {
+      "path": "skills/perspicuity/COMPONENT-CHANGES.json",
+      "type": "file",
+      "executable": false,
+      "sha256": "d92a2bb95f588942ffbbf16fe5b6b53a4dc8d5347eaec4d56fe126a27ae3cdbe",
+      "bytes": 26047
+    },
+    {
+      "path": "skills/perspicuity/COMPONENT-VERSIONS.json",
+      "type": "file",
+      "executable": false,
+      "sha256": "de95db61a9e2c8480b5b5bd1209824f60a3fe8263cfc842237fc7561655dabb9",
+      "bytes": 1304
+    },
+    {
+      "path": "skills/perspicuity/CONTEXT.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "85b02347b2fbe2da24c224b235feb26a9070548f274c457e5652f2f2b0987773",
+      "bytes": 2880
+    },
+    {
+      "path": "skills/perspicuity/LICENSE",
+      "type": "file",
+      "executable": false,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "skills/perspicuity/NOTICE.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "58d931c3293b83c80df10df80dff87584ef1ab7d075722c4834bfc0a8e066099",
+      "bytes": 816
+    },
+    {
+      "path": "skills/perspicuity/PACKAGE-CONTENTS.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "1f0becaa473f94012e315af071edb60e294bb90a09ed514a632a9503a5b2f831",
+      "bytes": 2293
+    },
+    {
+      "path": "skills/perspicuity/SKILL.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "88f7728ae5e6d99793bcd29f61bd1b3991246c83e2e053157c8b5b19173e7e17",
+      "bytes": 6309
+    },
+    {
+      "path": "skills/perspicuity/assets/record-template.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "b11bbfc8b28232dcc8190c7c853d3be11196f11ac35eb268a0bccfc9738b403e",
+      "bytes": 1916
+    },
+    {
+      "path": "skills/perspicuity/examples/pipeline.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "4a4dac2c9ed2282547c6ca8777eab76412fbe494928a53e25505164b894f29c1",
+      "bytes": 5611
+    },
+    {
+      "path": "skills/perspicuity/references/analysis.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "f2e03dc4a6152f249507ca77b1316511917c908cd0c9e4513783f091b10e2d2f",
+      "bytes": 4666
+    },
+    {
+      "path": "skills/perspicuity/references/record.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "36d0d592e031de4ec9c104619a809f4b0fbf1e62abb15646491f41e347b743b3",
+      "bytes": 5516
+    },
+    {
+      "path": "tools/install.py",
+      "type": "file",
+      "executable": false,
+      "sha256": "efe4193bdeb1989b44f314c9a03bbe35ae37c69a88cc883e882c6e92e583af0c",
+      "bytes": 1389
+    },
+    {
+      "path": "tools/manifest.py",
+      "type": "file",
+      "executable": false,
+      "sha256": "358820e5638bbe519683993fb599e3a9a084ca56c4d351cbaebd094daadc8958",
+      "bytes": 1826
+    }
+  ]
+}
