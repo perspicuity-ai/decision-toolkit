@@ -1,90 +1,132 @@
 # Criteria for the decision basis
 
-These criteria describe the record needed to assess a choice.
-Any suitable method can produce that basis.
-No method name, interview sequence or worksheet is required.
+Use these criteria within Frame and Decide.
+Choose the analytical method that fits the case.
+Keep the material basis inspectable without narrating every step.
 
-## Frame and valued outcomes
+## Frame
 
-Keep the original request visible beside the current frame.
-Explain why the frame addresses the intended outcome.
-Distinguish outcomes valued as ends from proposed means of achieving them.
-Retain the proposed causal connection as an assumption until observations support it.
+Keep the request and chosen frame visible.
+Test whether a proposed means serves the principal's intended outcome.
+Consider broader causes, alternatives, affected interests or horizons when the current frame could miss a material consequence.
+Adopt a useful reframe within the delegation.
+Keep explicit requirements and resource limits intact.
+Obtain additional authority for commitments outside the grant.
+Record a material frame change and its reason without narrating each attempt.
+After a material reframe, reassess objectives, alternatives and existing consequence estimates.
 
-Consider a wider or narrower frame when it could materially change the useful alternatives.
-State what changes and why.
-Respect settled boundaries and the principal's authority over the intention.
-Present a useful proposed change when the current scope does not authorize it.
-Do not silently substitute a larger ambition for the requested outcome.
+## Elicit values and objectives
 
+Establish what the decider wants to achieve before developing and evaluating alternatives.
+Reuse objectives from the delegation and applicable standing values.
+Ask why a proposed objective matters to distinguish desired ends from means.
+Distinguish valued outcomes from the means proposed to achieve them.
 Give material objectives usable measures, preferred directions and relevant horizons.
-Attribute objectives and preferences to their actual source.
-Keep proposed measures distinct from agreed criteria.
-Use defined qualitative measures when numerical measurement is unsuitable.
-Avoid counting a means and its expected benefit twice.
+Attribute objectives and preferences to their sources.
+Keep proposed criteria distinct from agreed criteria.
+Use descriptive measures when numerical measurement is unsuitable.
+Keep important objectives even when they are difficult to measure.
+Prevent overlapping objectives from giving the same effect duplicate influence.
+
+Register the initial objectives before evaluating alternatives.
+State when alternatives were already known.
+If an alternative reveals an overlooked objective, test its connection to the decider's values.
+Preserve the earlier basis and explain the amendment.
+Apply the revised objectives consistently to affected alternatives.
+Use consequence ranges to inform tradeoff elicitation when useful.
+Infer no weights from the attractiveness of a preferred alternative.
+
+### Standing values
+
+Use the principal's supplied values source or applicable project pointer.
+Otherwise, check `VALUES.md` within the known project root.
+If no source exists, continue with the supplied objectives.
+Identify the source's owner, scope and revision.
+Consider every applicable standing objective alongside the case's objectives.
+Scale the depth to the stakes and plausible effects.
+Keep affected interests visible beyond the immediate principal's benefit.
+
+Reuse an applicable parent finding by exact reference after checking its relevance.
+Reassess changed scope, alternatives, affected interests or cumulative exposure.
+Use one brief account for shared findings.
+State when no material connection or difference is identified.
+Put material effects and conflicts into the existing consequence comparison.
+Apply binding constraints only when their source establishes them.
+Resolve material conflicts of authority before selection.
+
+Attribute a concrete contribution to its source.
+Distinguish supplied requirements, inherited findings and new judgments.
+An objective can matter without changing the choice.
+A recorded contribution alone establishes no causal improvement.
+Infer neither weights nor permission from a values document.
+Preserve the source revision used for earlier choices.
+
+## Givens, uncertainties and assumptions
+
+Identify conditions that could affect the frame, feasibility, comparison or implementation.
+Keep only material conditions in the record.
+
+| Condition | Meaning | Basis to retain |
+| --- | --- | --- |
+| Given | An established fact or imposed condition for this decision. | Source, scope and date; authority for an imposed condition. |
+| Uncertainty | A relevant fact or outcome that is not known. | Plausible possibilities, evidence limits and implications. |
+| Assumption | A claim provisionally treated as true. | Reason for using it and evidence that would challenge it. |
+
+Distinguish a sourced fact from an imposed requirement.
+Check whether a dated given still applies.
+Use an assumption to simplify an uncertainty only when the simplification is defensible.
+Use ranges or scenarios when a single assumption would conceal a material risk.
+For a material condition, identify the affected work and the observation that would require reconsideration.
+Assign an owner or review trigger when later checking matters.
+Keep unknown conditions explicit.
+Update affected judgments when the basis changes.
+Preserve the basis used for earlier choices.
 
 ## Alternatives and their consequences
 
-Identify credible courses of action within the same scope.
-Retain material reasons for exclusion.
-Include the current course when feasible.
-Explain an absent feasible baseline.
-A course can be a direct action, combined strategy or conditional plan.
-Identify important interactions in a combined strategy.
-State the trigger and response in a conditional plan.
+Develop credible courses of action within scope.
+Include the feasible current course or explain its exclusion.
+Consider combinations, contingent plans or a reversible trial when useful.
+Keep material reasons for exclusion visible.
 
-Keep one consequence table with objectives as rows and complete alternatives as columns.
-State the horizon, shared conditions and comparison baseline.
-Use raw outcomes or defined qualitative descriptions as the table's foundation.
-Keep a source or reasoning basis for each material estimate.
-Use linked notes or cell keys when they make the table easier to inspect.
+Define each material consequence's measure, conditions and horizon.
+Use comparable definitions across alternatives.
+Preserve exact measurements and calculations with their sources.
+Collect evidence that supports material consequence claims or distinguishes alternatives.
+Assess whether the sources support the claim in the actual case.
+Identify material gaps that could change the choice.
+Reuse existing evidence when its scope and currency remain suitable.
 
-| Objective and measure | A. Current course | B. Alternative |
-| --- | --- | --- |
-| Outcome over a stated period | Estimate or unknown; basis reference | Estimate or unknown; basis reference |
+Use a table or another representation that makes the decisive comparison clear.
+Link supporting detail instead of repeating it.
 
-Explain what evidence, calculation, experiment or other assessment supports each consequential claim.
-Distinguish observations from the judgments that apply them to this case.
-Identify assumptions, countereffects and the judgment's author.
-Keep forecasts separate from actual observations.
-Do not assert that an option was tested when it was only described.
-
-State uncertainty through justified ranges, scenarios, partial bounds or explicit unknowns.
-Distinguish variability in outcomes from confidence in an estimate.
-Use statistical labels and probabilities only with a supporting basis.
-Keep a known amount separate from uncertainty about its applicability.
-Do not invent numerical ranges to fill the table.
+Keep observations, assumptions and judgments attributable.
+State uncertainty through supported ranges, scenarios or explicit gaps.
+Separate outcome variability from confidence in an estimate.
+Keep unsupported consequences visibly unresolved.
 
 ## Preferences and conclusion
 
-Explain the gains and sacrifices under the authorized decider's preferences.
-Identify which preferences are supplied, inferred or unresolved.
-Keep risk attitudes with preferences and outcome uncertainty with forecasts.
-Keep constraints separate from compensating tradeoffs.
+Explain the gains and sacrifices under the decider's preferences.
+Identify supplied, inferred and unresolved preferences.
+Keep risk attitudes separate from uncertainty about outcomes.
+Keep binding constraints separate from compensating tradeoffs.
 
-If a comparison uses scores, define each scale and its interpretation.
-Use each objective's own scale for its category.
-Keep raw outcomes visible beside scores.
-If a category's magnitude is unsupported, retain its known direction with an unknown magnitude.
-Do not treat unknown consequences as neutral scores.
-Never sum ordinal labels such as somewhat better or much worse.
+For a numerical ranking, define the scale meanings, weights and aggregation assumptions.
+Compute arithmetic in code.
+Label an expedient scoring rule as a heuristic.
+Check whether plausible scale or weight changes alter its conclusion.
+Ordered labels alone do not establish equal intervals or interchangeable value across objectives.
+Use direct comparison or thresholds when they express the preferences adequately.
+Keep unknown consequences distinct from neutral scores.
 
-If a comparison uses numerical weights, state their source, meaning, outcome ranges and aggregation assumptions.
-Apply weights only to compatible, defined value scales.
-Keep numerical weights optional.
-Direct comparisons, thresholds and contextual tradeoffs can establish a sufficient preference basis.
-Do not extrapolate a local willingness to pay without a supported preference assumption.
-Distinguish a strict preference from indifference at an exact threshold.
-
-Explain why the conclusion follows from the recorded basis.
-Identify plausible changes that would reverse it.
-Keep a conditional conclusion when a material preference or estimate remains unresolved.
-Stop refinement when further precision is unlikely to affect a defensible choice at these stakes.
+Explain why the conclusion follows and what would warrant reconsideration.
+Compare the likely practical benefit of further inquiry with its effort and delay.
+Stop when the available basis supports action at the actual stakes.
+Retain a conditional conclusion when a material gap remains.
 
 ## Optional methods
 
-Select methods for their usefulness in the case.
-PrOACT can organize a discussion.
-Experiments, search, simulation, optimization or direct comparison can develop the same required basis.
-Use goal frameworks such as SMART or OKRs only when they clarify the undertaking.
-The method supplies no additional decision or execution authority.
+Use research, experiments, simulation, optimization or another suitable method to develop the basis.
+Apply a named framework only when it helps the task.
+No method supplies additional authority.

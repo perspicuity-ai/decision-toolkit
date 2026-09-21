@@ -36,6 +36,22 @@ Replace `DIRECTORY` with the host's skill directory.
 The installer creates a `perspicuity` directory inside it.
 
 If the installer reports an existing installation, retain that copy until you choose how to replace it.
+
+## Local project dashboard
+
+The complete skill includes the dashboard server, interface and launcher.
+The dashboard requires Python 3.10 or later and PyYAML.
+The interface requires no JavaScript build.
+
+After installation, ask your agent to start the Perspicuity dashboard for your project.
+The launcher uses that project's records and a separate local address.
+Read [the dashboard guide](skills/perspicuity/references/dashboard.md) for setup and launcher commands.
+Keep the skill's complete directory when you move or install it.
+
+Task and worker visibility requires local Codex metadata.
+Other hosts can display the project's work records and their connections.
+Browser skill uploads require a host that can execute Python and expose a local server to use this optional dashboard.
+
 ## Manual installation for other hosts
 
 If your host supports local skill directories, copy the complete `skills/perspicuity` directory from the developer ZIP.

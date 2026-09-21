@@ -36,7 +36,13 @@ For delegated work, specify which choices the agent can make and what actions it
 Supply the saved record when you resume in a new session.
 Keep linked outputs accessible when the agent needs them for review.
 
-The skill supplies guidance and a record template.
+The skill supplies guidance, a record template and an optional local dashboard.
+Ask your agent to start the Perspicuity dashboard for the current project.
+The dashboard shows that project's work records, tasks, workers and connections.
+It reads local records without model calls.
+Task and worker visibility requires supported host metadata, currently the local Codex adapter.
+Read [the dashboard guide](skills/perspicuity/references/dashboard.md) for requirements and commands.
+
 Execution and follow-up depend on the host's tools and your authorization.
 The package includes no scheduler or hosted service.
 

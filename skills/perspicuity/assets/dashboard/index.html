@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Operations Dashboard · Perspicuity</title>
+  <link rel="stylesheet" href="/operations/style.css">
+  <script src="/operations/vendor/marked.umd.js" defer></script>
+  <script src="/operations/vendor/purify.min.js" defer></script>
+  <script src="/operations/app.js" defer></script>
+</head>
+<body>
+  <!-- dashboard-navigation -->
+  <main>
+    <div class="heading"><div><p class="eyebrow">YOUR LOCAL WORK</p><h1>Operations Dashboard</h1><p class="subtitle">What the work is, who owes the next move, and what is blocking it.</p></div><div class="refresh"><button id="refresh">Refresh now <span aria-hidden="true">↻</span></button><label class="check"><input id="auto" type="checkbox" checked> Refresh every 15 seconds</label><p id="freshness" aria-live="polite">Reading local evidence…</p></div></div>
+    <p id="projectLabel" class="sourceNotice"></p>
+    <div id="error" role="alert" hidden></div>
+    <section class="metrics" id="metrics" aria-label="Work overview"></section>
+    <div class="intro"><span class="dot" aria-hidden="true"></span><p>Reads local files. No model calls. <span>Work status comes from records. Task activity comes from saved events.</span></p><button id="coverageJump" class="textbutton">View coverage ↓</button></div>
+    <nav class="tabs" aria-label="Dashboard views"><button data-view="work" aria-pressed="true">Work records <span id="recordCount"></span></button><button data-view="tasks" aria-pressed="false">Tasks & workers <span id="taskCount"></span></button><button data-view="connections" aria-pressed="false">Connections <span id="edgeCount"></span></button></nav>
+    <section id="workView" class="view">
+      <div class="filters"><label class="search">Find work<input type="search" id="search" placeholder="Search titles, next actions or blockers"></label><label>Record<select id="recordFilter"><option value="open">Open + unclassified</option><option value="all">All records</option><option value="closed">Closed + unclassified</option></select></label><label>Queue<select id="queueFilter"><option value="actionable">Actionable now</option><option value="">Every open record</option><option value="needs_you">Waiting on you</option><option value="blocked">Blocked</option><option value="ready">Ready for an agent</option><option value="in_review">In review</option><option value="waiting">Awaiting review</option></select></label><label>Work status<select id="statusFilter"><option value="">Every status</option><option value="active">Active</option><option value="waiting">Blocked</option><option value="submitted">Awaiting review</option><option value="in_review">In review</option><option value="accepted">Accepted</option><option value="not_started">Not started</option><option value="stopped">Stopped</option><option value="unclassified">Unclassified</option></select></label><label>Check date<select id="dueFilter"><option value="">Every date</option><option value="due">Due now</option><option value="upcoming">Upcoming</option><option value="unscheduled">No date</option></select></label><button id="clearFilters" class="textbutton">Reset</button></div>
+      <div class="sectionhead"><p id="resultsCount" aria-live="polite"></p><span class="muted">Select a record for its current position and source.</span></div>
+      <div id="recordList" class="recordList"></div>
+    </section>
+    <section id="tasksView" class="view" hidden>
+      <div class="sectionhead"><div><h2>Local tasks</h2><p class="muted">Task titles and the last saved turn event. A finished turn can still leave work open.</p></div><label class="check"><input type="checkbox" id="showWorkers"> Show recent workers</label></div>
+      <p id="taskNotice" class="sourceNotice"></p><div id="taskList" class="taskList"></div>
+    </section>
+    <section id="connectionsView" class="view" hidden>
+      <div class="sectionhead"><div><h2>How records connect</h2><p class="muted">Arrows follow links written in the source records. Only an explicit dependency is labeled as one.</p></div><label>Focus on a record<select id="graphFocus"><option value="">All connected records</option></select></label></div>
+      <div class="graphLegend"><span><i class="legendDot"></i> Open record</span><span><i class="legendDot closedDot"></i> Closed record</span><span>→ Source reference</span></div>
+      <div class="graphWrap"><svg id="graph" role="img" aria-label="Connections between current work records"></svg></div>
+      <div id="connectionList" class="connectionList"></div><p id="isolated" class="muted"></p>
+    </section>
+    <details class="coverage" id="coverage"><summary>Sources & coverage <span id="issueCount"></span></summary><div id="coverageBody"></div></details>
+    <footer>Perspicuity · Private operations <span>Saved source evidence does not establish acceptance or authority.</span></footer>
+  </main>
+  <dialog id="detail" aria-labelledby="detailTitle"><div class="sectionhead"><p class="eyebrow">WORK RECORD</p><button id="closeDetail" aria-label="Close record details">Close ×</button></div><h2 id="detailTitle"></h2><div id="detailBody"></div></dialog>
+</body>
+</html>

@@ -1,45 +1,268 @@
 # Perspicuity terminology
 
-Perspicuity is one skill for carrying an intention through a decision, authorized work and outcome review. Its responsibilities are Understand, Choose, Act and Review. These terms describe the same concepts in human coaching and delegated agent work. Perspicuity specifies the record needed for review while allowing any suitable analytical method. A consequence table retains the comparison; numerical scores and weights remain optional.
+Core terms for Perspicuity's skills, strategies, and decision records.
+The definitions express usage across Perspicuity's skills and decision records.
 
-**Principal**: The person or organization that supplies objectives and authority.
+## Scope and authority
 
-**Decider**: The person or agent authorized to select an alternative.
+**Perspicuity**:
+The repository-wide system of skills, specifications, decision records, and supporting tools.
+_Avoid_: Decide when referring to the entire system.
 
-**Objective**: A desired outcome against which alternatives are assessed.
+**Frame**:
+The Perspicuity responsibility for establishing the intended outcome and problem worth resolving.
+The delegated agent can challenge assumptions and adopt a better analytical frame within its grant.
+A reframe preserves explicit requirements and does not enlarge execution authority.
 
-**Fundamental objective**: An objective valued as an end within the decision's scope.
+**Decide**:
+The current Perspicuity responsibility for developing objectives, alternatives, consequence comparison and selection within a frame.
+Historical references to the separate Decide skill retain their original human-coaching meaning.
 
-**Means objective**: An objective pursued because it contributes to another objective. Building a pipeline can serve the objective of obtaining suitable clients.
+**Decide Agent**:
+The Perspicuity skill that makes a decision within delegated authority.
 
-**Performance measure**: A defined way to assess a consequence, with the preferred direction stated.
+**Perspicuity skill**:
+The single entry for preparing a choice, selecting within authority, carrying out work and reviewing results in one evolving record.
+Its three stages are Frame and Decide, Act, and Review.
+The first stage keeps framing explicit and registers the basis and plans prospectively.
+Frame and Decide draws on decision analysis and value-focused thinking.
+Act draws on project management.
+Review draws on evaluation and adaptive management.
+Inquiry and iteration can occur across the stages.
+The same skill supports human-retained and delegated choices.
+It declares a working mode: `Plan` stops at ratified decisions and registered grants, and `Run` executes granted units and returns their results.
+It requires an inspectable decision basis while allowing any suitable analytical method.
+The new `perspicuity-work/1` record convention remains distinct from historical `spec: 0.2` records.
+Existing Decide and Decide Agent names retain their historical meanings.
 
-**Constraint**: A binding limit with an identified owner or governing source.
+**Principal**:
+The person or organization that supplies the objectives and authority for a delegation.
 
-**Alternative**: A complete course of action within the scope. It can be a direct alternative, a combined strategy or a conditional plan.
+**Decider**:
+The person or agent with authority to select an alternative for the decision in scope.
 
-**Strategy**: A coherent combination of component choices that forms a complete alternative.
+## Objectives and their basis
 
-**Consequence**: An observed or estimated outcome of an alternative against an objective under specified conditions.
+**Objective**:
+A desired outcome against which alternatives are assessed.
 
-**Evidence**: An inspectable observation or artifact that exists independently of the current judgment.
+**Standing objective**:
+An objective that a principal wants considered across decisions within a stated scope.
+A values document identifies these objectives and their source of authority.
+Standing objectives do not supply weights, constraints or execution permission unless their source establishes them.
 
-**Assumption**: A claim treated as true without verification, with its basis and status explicit.
+**Fundamental objective**:
+An objective valued as an end within the decision's scope.
 
-**Judgment**: An estimate or assessment supplied where evidence does not determine the result.
+**Means objective**:
+An objective pursued because it contributes to another objective within the decision's scope.
 
-**Preference**: What the decider values, including acceptable sacrifices and attitudes to risk.
+**Performance measure**:
+A defined way to assess an alternative's consequence for an objective.
+Its preferred direction describes which measured outcomes the decider prefers.
 
-**Tradeoff**: A sacrifice on one objective accepted for a gain on another under the decider's preferences.
+**Constraint**:
+A binding limit with an identified owner or governing source that restricts feasible alternatives.
 
-**Commitment**: An undertaking with identified parties, terms and establishment evidence. A proposed plan alone does not establish it.
+**Evidence**:
+An observation or artifact that exists independently of the current decision and can be inspected.
 
-**Assessment**: An inspection of exact evidence against original criteria, with an assessor, finding and gaps.
+**Assumption**:
+A claim treated as true without verification, with its status and basis made explicit.
 
-**Outcome**: A dated finding from evidence against an objective. Completing the work alone does not establish its intended benefit.
+**Given**:
+An established fact or imposed condition used for a decision, with its source, scope and date made explicit.
 
-**Work record**: The maintained account of one coherent intention, its decision basis, authority, work, results and material changes. A decision record's analytical content remains within it.
+**Uncertainty**:
+A relevant fact or outcome that is not known, with its plausible possibilities and implications made explicit where useful.
 
-**Revision**: A meaningful saved version of the same record. The record's identity remains stable.
+**Judgment**:
+An estimate or assessment supplied by a person or agent where the available evidence does not determine it.
 
-The current convention is `perspicuity-work/1`. Historical `spec: 0.2` records retain their identifiers and original authority. These definitions do not replace another project's instructions or authorize external actions.
+## Alternatives and strategies
+
+**Alternative**:
+A complete course of action within the decision's scope that can be compared with other courses of action.
+_Avoid_: Component option when referring to a complete course of action.
+
+**Direct alternative**:
+An alternative specified as a whole for comparison.
+
+**Component decision**:
+One part of a broader decision for which a strategy selects a component option.
+
+**Component option**:
+A possible answer to one component decision.
+_Avoid_: Alternative when the option does not specify a complete course of action in the current scope.
+
+**Strategy**:
+A coherent combination of component options that forms a complete alternative.
+
+**Assembled strategy**:
+A strategy constructed by selecting compatible options across component decisions.
+
+**Strategy table**:
+A table of component decisions and their available options, used to construct strategies.
+Each column represents a component decision; each completed strategy identifies its selected options.
+
+**Status quo**:
+The existing course of action used as the baseline, including its continuing costs and commitments.
+
+**Consequence**:
+An observed or estimated outcome of an alternative against an objective under specified conditions.
+
+**Rubric distribution**:
+A model's probabilities over defined descriptive levels for a consequence judgment.
+It describes the model's assessment of the supplied evidence.
+It is not a validated distribution of future outcomes without relevant calibration evidence.
+
+**Tradeoff**:
+A sacrifice on one objective accepted for a gain on another under the decider's preferences.
+
+## Records and reuse
+
+**Initiative**:
+An outcome-directed collection of linked decisions, work and evidence across initiation, ratification, implementation and monitoring.
+_Avoid_: Plan when naming this Perspicuity concept.
+
+**Decision record**:
+An account of a decision and its basis, including objectives, alternatives, consequences, choice, and conditions for reconsideration.
+
+**Working mode**:
+The declared purpose of the current work: `Plan` establishes and ratifies choices and registers the work they authorize; `Run` executes granted units and returns their results.
+The mode sets the stopping condition, not the depth of analysis or the authority.
+A planning request stops at its boundary even when permission to act already exists.
+The mode is recorded in the active record's Current position.
+The mode name `Plan` does not name an Initiative and is not a Work Plan interval; read those terms by their own entries.
+
+**Ratified decision**:
+A selection saved with its comparison, reason, decider and basis revision.
+Ratification establishes what was chosen and why.
+It permits no work by itself: a work unit becomes executable only when a grant names the actor and the included work.
+
+**Pickup plan**:
+The plan registered for one granted unit at the time that unit is taken up.
+It states how the unit will be carried out and what will show it is done.
+The first unit's pickup plan is registered at planning time; each later one waits for its own pickup because the earlier units change what is known.
+Adapting its route stays with the actor; a changed problem, comparison or selection returns to the decider.
+
+**Escalation**:
+A granted unit's return to the decider when the work changes the problem, the comparison or the selection.
+The boundary is keyed to what changed, not to the actor's confidence, because an unstated boundary produces drift and one keyed to confidence escalates everything.
+Escalation changes no authority by itself; the unit waits inside its existing grant until the decider responds.
+
+**Objective record**:
+A detailed definition of an objective, including its meaning, possible assessment, contextual relationships, and source of agreement.
+
+**Decision template**:
+Reusable criteria and guidance for a recurring class of decisions, with current inputs supplied by each case.
+_Avoid_: Decision record when referring to reusable criteria rather than an individual case.
+
+**Decision corpus**:
+A collection of decision records and associated definitions, evidence, assumptions, and review material.
+
+**Decision tree**:
+A representation of choices, uncertain events, and resulting outcomes.
+_Avoid_: Objective hierarchy when referring to branching choices and events.
+
+**Objective hierarchy**:
+A representation of broader objectives and their narrower constituent objectives.
+Contributions between objectives can require additional links rather than a single parent.
+
+## Linked lifecycle evidence
+
+**Decision chain**:
+The linked account of an intention, authority, consequential choices, delegated work, evidence and review.
+Agent delegation sits at its centre.
+The chain supports governance and assessment of trust by connecting recorded claims to actual actions and outcomes.
+Existing signed chains retain their own formats and historical evidence.
+
+These terms describe linked evidence rather than decision statuses or automatic authority.
+They describe linked evidence, not additional decision statuses or automatic authority.
+
+**Grant**:
+A source instruction that authorizes a named actor's operation on a target within stated limits.
+Selection authority applies only when the source supplies it.
+Within the Perspicuity skill, a grant is registered for one work unit and names the actor, the work included, the work excluded and the stop condition.
+It is the one permission another actor may rely on without reading the whole parent account.
+It supplies no authority to select, to change scope or to act outside the named work, and it is not a general permission for the intention.
+This skill use is distinct from a host authorization record, which carries its own terms.
+
+**Task**:
+A bounded unit of work with an existing identity, deliverable, actual actor, targets, prerequisites and original acceptance conditions.
+Its evidence links the selected basis and applicable grant.
+The current project instructions designate the source of task state.
+_Avoid_: Decision status when describing task state.
+
+**Attempt**:
+An actual performance of an operation, with its performer, target, executed basis, result, observed time and exact outputs.
+Attempts include failures and unknown effects.
+
+**Artifact**:
+An identifiable output or source with exact content, revision, locator and producer when known.
+A locator supplies location rather than identity.
+
+**Assessment**:
+An inspection of exact evidence against original criteria, with an actual assessor, verdict and gaps.
+Preserve applicable independence requirements.
+A task assessment and a commitment assessment address different conditions.
+
+**Commitment**:
+An undertaking with parties, terms and establishment evidence.
+Assess fulfilment against matching performance evidence.
+
+**Outcome**:
+A dated finding from evidence against an objective or falsifier.
+Task acceptance alone establishes neither an outcome nor commitment fulfilment.
+A desired outcome expresses the intended effect before such evidence exists.
+
+The Initiative and Objective record definitions remain distinct from machine record kinds.
+The current Initiative uses an ordinary root decision, Plan and benefit account.
+An Objective record supplies an objective's detailed definition.
+Neither term adds a new v0.2 frontmatter type.
+Preserve original identities, parent relations, reference bases, authority and history when linking these records.
+Broader type adoption and project-to-corpus ownership remain unresolved.
+
+## Shared record foundations
+
+These distinctions connect to the existing representations.
+They add no universal fields or machine kinds.
+
+**Object kind**:
+The meaning of a represented thing, separate from its subject domain, storage location and current state.
+
+**Corpus-qualified identity**:
+The source corpus and its local identifier, interpreted under that source's identity rules.
+Equal local identifiers in different corpora do not establish one object.
+
+**Revision basis**:
+The exact source version that supports a reference or judgment, separate from the object's current version.
+
+**Participation**:
+An object's involvement in a relationship, decision or work view.
+Participation does not transfer ownership, establish a dependency or supply an execution grant.
+
+**Retention disposition**:
+A decision about preserving or removing material, with its applicable authority and evidence obligations.
+Temporary use does not itself authorize deletion.
+
+**Work Plan**:
+An addressable view of intended results and proposed work arrangements for an interval.
+Its references preserve existing identities and task authority across views.
+
+## Current work tracking
+
+These terms describe the current work-tracking convention.
+
+**Record status**:
+Whether the evolving record has an unresolved choice, delivery or promised review.
+An accepted delivery can remain in an open record.
+
+**Work status**:
+The observed state of the delivery named in the record's Work scope.
+It supplies neither execution permission nor evidence that an agent is currently running.
+
+**Next check**:
+The earliest date when an actor must inspect the record again.
+It can precede the end of an outcome's observation window.
+The record retains each review's criteria, evidence, owner and timing.

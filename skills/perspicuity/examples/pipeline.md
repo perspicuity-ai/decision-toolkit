@@ -1,88 +1,109 @@
 ---
 format: perspicuity-work/1
 id: example-client-pipeline
-revision: 3
-skill_version: 0.2.0
+revision: 9
+skill_version: 0.5.0
 updated: 2026-10-16
+record_status: open
+work_status: accepted
+next_check: 2026-10-23
 ---
 
 # Build a usable client pipeline
 
-Fictional teaching example. All amounts, instructions, actions and observations below are invented for illustration.
-This example uses an ordinal comparison with an explicit scale. Other cases can use raw consequences without scores or weights.
+Fictional teaching example. All scenario times, inputs, actions and observations are invented.
+Times use America/Edmonton offsets. Source and snapshot labels denote no real files or Git versions.
+No real work or model calls occurred. Prior revision notes remain as document history.
 
 ## Current position
 
-Principal and decider: Morgan, business owner. Agent may select and build a local pilot within the stated limits.
-Work owner: agent for delivery; Morgan for client contact and business review.
-Decision: selected B at revision 2.
-Work: local pilot accepted after checks.
-Outcome: client benefit remains unestablished after the first review.
-Next: Morgan checks unanswered approaches and records responses on October 23.
+Principal: Morgan, business owner. Decider: agent for the local pilot under Morgan's grant.
 
-## Understand
+Decision: B at revision 2.
 
-Morgan wants two suitable new clients within eight weeks. A pipeline should help identify appropriate prospects and retain follow-up context.
-The link from better follow-up to new clients is a hypothesis. Building the pipeline is a means.
+Work scope: Build a local pilot from ten supplied prospect records.
 
-Authority, October 1: choose and build a local pilot using ten supplied fictional prospect records. Budget: no spending and four hours of work.
-Morgan retains live contact, any service purchase and the choice to expand.
+Work: local pilot from ten records, accepted after checks. Client benefit remains unknown.
 
-Objectives: suitable new clients within eight weeks; less weekly administration; no additional software spending.
-Current course A uses a scattered notes document. Alternative B combines a local tracker, a clear next-action field and a weekly review.
-These components form one strategy. Its effectiveness depends on Morgan using it and prospects responding.
+Next: Morgan reviews unanswered approaches and responses on October 23, then the client objective on November 26.
+
+| Stage | began_at | registered_at and exact saved basis | finished_at |
+| --- | --- | --- | --- |
+| Frame and Decide | 2026-10-01T09:00:00-06:00 | 2026-10-01T09:10:00-06:00, F1 | 2026-10-01T10:00:00-06:00 |
+| Act | 2026-10-01T10:00:00-06:00 | 2026-10-01T10:15:00-06:00, D2-plan | 2026-10-02T12:00:00-06:00 |
+| Review, first check | 2026-10-16T09:00:00-06:00 | 2026-10-01T10:15:00-06:00, D2-plan | Unknown |
+
+The retrospective review note lacks a finish time. Stage intervals include waits, not measured effort.
+
+## Frame and Decide
+
+Morgan's brief, S1, seeks two suitable new clients within eight weeks, less weekly administration and no additional software spending.
+
+### Inputs and authority
+
+Given: Morgan supplies S1, ten prospect records P1 and the administration estimate below.
+S1 authorizes the agent to choose and build a local pilot with no spending and at most four hours of work.
+Morgan retains live contact, service purchases and expansion.
+
+Assumed: Morgan will use a weekly review, and visible next actions could reduce missed follow-ups.
+Uncertain: prospects' responses, client yield and the pilot's effect on administration.
+The agent frames the pilot around reliable follow-up within S1's objectives and limits.
+Before alternative evaluation, F1 saves this frame, objectives, conditions and authority.
+
+Alternative A continues scattered notes. B combines a local tracker, a visible next action and a weekly review.
 
 ### Consequences
 
-Baseline A. Horizon: eight weeks. All forecasts below are illustrative agent judgments.
+Horizon: eight weeks. Estimates below are illustrative judgments, not measured results.
 
-| Objective | Measure | Preferred direction | A. Current notes | B. Local tracker and review |
-| --- | --- | --- | --- | --- |
-| 1. Suitable clients | Accepted clients | Higher | 0; Range: not applicable | unknown; Range: unknown |
-| 2. Administration | Minutes per week | Lower | 0; Range: not applicable | +1; Judgment range: [-2 to +2] |
-| 3. Software spending | Additional dollars | Lower | 0; Range: not applicable | 0; Range: [0 to 0] |
+| Objective | A. Current notes | B. Tracker and review | Basis and limit |
+| --- | --- | --- | --- |
+| Suitable clients, higher preferred | Unknown | Unknown | No conversion evidence. Clear follow-up alone cannot establish client yield. |
+| Administration, lower preferred | Estimated 60 minutes/week; range 45–90 | Forecast 40 minutes/week; range 20–100 | Morgan supplies A; agent supplies B. Overlap leaves improvement uncertain. |
+| Additional software cost, lower preferred | $0 | $0 | Fixed by scenario and no-purchase authority. Setup time remains a separate cost. |
 
-Scale: -2 much worse, -1 somewhat worse, 0 equivalent, +1 somewhat better, +2 much better.
+### Selection and review criteria
 
-| Cell | Evidence or judgment | Ordinal derivation | Uncertainty basis | Source |
-| --- | --- | --- | --- | --- |
-| A1 | Agent cannot estimate client conversion from the supplied notes. | Baseline definition. | Client yield unknown. | Fictional scenario input. |
-| B1 | Clear follow-up could reduce omissions; demand and response remain unknown. | Comparative direction is unsupported. | No conversion data supports bounds or probability. | Agent forecast from proposed mechanism. |
-| A2 | Morgan estimates 60 minutes weekly. | Baseline definition. | Self-report range 45–90 minutes. | Fictional principal estimate. |
-| B2 | Agent estimates 40 minutes weekly after setup. | Differences under 15 minutes are equivalent; 15–29 are somewhat better or worse; 30 or more are much better or worse. | 20–100 minutes plausible against a 45–90 baseline. Differences span 55 minutes worse to 70 better, allowing all categories. | Agent scenario forecast; Morgan's illustrative scale. |
-| A3 | Existing notes require $0 additional software. | Baseline definition. | Amount fixed within this scope. | Scenario conditions. |
-| B3 | Local pilot requires $0 additional software. | Equivalent software spending. Setup time remains a separate cost. | Fixed within the no-purchase scope. | Scenario design and authority. |
+Morgan accepts up to four hours of setup to try reducing administration and missed follow-ups.
+`selected_at: 2026-10-01T10:00:00-06:00`: agent selects B under S1.
+At that time, D2-choice saves F1, unchanged P1, the comparison and accepted setup cost at scenario revision 2.
 
-### Tradeoffs
-
-Morgan accepts up to four hours of setup for a reversible trial of reduced administration and better follow-up visibility.
-The uncertain client benefit cannot justify a paid expansion yet. No ordinal scores are added.
-If administration increases or next actions remain unclear, revise or abandon the tracker.
-
-## Choose
-
-Revision 2, October 1: the agent selects B under Morgan's delegation.
-Deliver a local tracker preserving all ten records, with visible ownership, next action and due date.
-Acceptance requires correct record retention and a successful next-action lookup.
-
-Morgan owns the benefit review. On October 16, inspect administrative effort, follow-up omissions and client responses.
-At eight weeks, assess the two-client objective and other explanations for the result.
-Calendar reminder proposed; none created in this example.
+Before execution, D2-plan saves the work plan below and delivery criteria: retain all ten records and required fields. Morgan can find each next action.
+D2-plan registers Morgan's benefit reviews: time, omissions and replies on October 23, then suitable clients and their reasons on November 26.
+If administration increases or next actions remain unclear, reconsider B within the grant.
+No reminder was created.
 
 ## Act
 
-October 2: the agent produces `pipeline.csv` and corrects one omitted next-action field during its self-check.
-Checks confirm all ten source identifiers and required fields. Morgan accepts the local deliverable.
-In an actual case, exact output revisions and check evidence would be linked here. This example includes no executed artifacts.
+| [D2-plan](#selection-and-review-criteria), from D2-choice | Input and actor | Done when | Fictional execution evidence |
+| --- | --- | --- | --- |
+| Build the tracker | Agent uses [P1 under S1](#inputs-and-authority) | All ten identifiers and required fields remain | October 2: agent creates O1, `pipeline.csv`, then corrects an omitted next-action field. |
+| Check and accept | Agent checks O1 against P1. Morgan checks use. | Checks pass. Morgan finds all ten next actions. | October 2: checks pass. Morgan completes the lookup and accepts O1 at Act's finish. |
+
+The fictional effort report records three hours. A real record would link each input, output revision and check result.
 
 ## Review
 
-October 16: Morgan reports 45 minutes of weekly administration and no missed planned follow-ups. No clients have signed.
-These observations do not establish that the tracker caused improvement. The eight-week objective remains unresolved.
-Morgan keeps the local pilot and checks responses on October 23. Paid expansion remains outside the agent's authority.
+October 16: Morgan reports 45 minutes of weekly administration, no missed planned follow-ups and no signed clients.
+This does not establish causal improvement. Morgan keeps the pilot within its existing scope.
+
+| Question | Evidence and window | Owner and due | Finding and response |
+| --- | --- | --- | --- |
+| Does follow-up help without excessive effort? | Weekly time, omissions and replies | Morgan, October 23 | Inspect the next week's experience. |
+| Did the work support two suitable clients? | Signed clients, Morgan's suitability judgment and their reasons over eight weeks | Morgan, November 26 | No clients yet. Keep the observation window open. |
+
+Delivery stays accepted while these reviews keep the record open.
+The October 23 check precedes the eight-week outcome review.
+If evidence challenges the assumptions about tracker use or client yield, revisit Frame and Decide.
+Preserve F1, both D2 snapshots and the new evidence. The agent still lacks authority for spending or client contact.
 
 ## Changes
 
-- Revision 1, October 1: initial intention, alternatives and forecasts. Morgan supplies the two-client objective and four-hour limit.
-- Revision 2, October 1: agent selects B within that limit. Forecasts and the original client objective remain unchanged.
-- Revision 3, October 16: adds delivery acceptance and first review. Expected client benefit remains unproven. No earlier basis changed.
+- Revision 1, October 1: Morgan supplies the objective and limits. Agent records alternatives and forecasts.
+- Revision 2, October 1: agent selects B within the delegation.
+- Revision 3, October 16: adds acceptance and first review. Client benefit remains unproven.
+- Revision 4, October 16: distinguishes delivery state and review dates. No reminder exists.
+- Revision 5, October 16: shortens the fictional example into Decide, Act and Review. Original forecasts and authority remain in Git.
+- Revision 6, October 16: makes Frame explicit and illustrates broader analysis within the original delegation.
+- Revision 7, October 16: removes routine Jev preparation while retaining the evidence and pilot basis.
+- Revision 8, October 16: combines Frame and Decide, distinguishes inputs and adds fictional stage times, saved bases and a work plan with prior review criteria.
