@@ -76,6 +76,10 @@
     "0.5.0": {
       "change": "breaking",
       "reason": "Carry skill 0.5.0, which declares a working mode and makes a work unit executable only through a registered grant. The unit ladder and the grant boundary change how authorized work is recorded, so the distribution declares a breaking component change. The dashboard, its launcher and its Python requirements remain outside this package."
+    },
+    "0.6.0": {
+      "change": "breaking",
+      "reason": "Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly."
     }
   },
   "glossary": {
@@ -98,6 +102,10 @@
     "0.1.4": {
       "change": "patch",
       "reason": "Record the working mode, ratified decision, pickup plan and escalation terms, and distinguish the unit grant from a host authorization record."
+    },
+    "0.1.5": {
+      "change": "feature",
+      "reason": "Define plan, the Review mode, done when, ship to, acceptance, tolerance, claim, unit state, short-form choice, plan close-out and commit trailer, and describe the grant as a grant card."
     }
   },
   "licensing": {
@@ -605,6 +613,36 @@
         }
       ],
       "reason": "Declare a working mode, so a planning session stops at ratified decisions and registered grants while a run executes granted units and returns their results. Add the unit ladder, the grant with its includes, excludes and stop condition, pickup registration with its escalation boundary, and a disclosure threshold. Revise the terminology and bring the record template to the same revision. The dashboard is out of this package's scope. The package also carries the Jev comparison tool, which the guide links to and which needs no added dependency."
+    },
+    "0.5.1": {
+      "change": "feature",
+      "reason": "Add the perspicuity-plan/1 format and its template for units that must happen in an order or span repositories, and keep sequence out of the work record. This local source revision preceded the packaged candidate."
+    },
+    "0.5.2": {
+      "change": "patch",
+      "reason": "Add review_due to the plan template and complete the plan format's first run. This local source revision preceded the packaged candidate."
+    },
+    "0.5.3": {
+      "change": "feature",
+      "reason": "Add Accept as a third working mode for a receiver's verdict, a named shipping destination, and the delegation obligation. This local source revision preceded the packaged candidate."
+    },
+    "0.6.0": {
+      "change": "breaking",
+      "prior_revisions": [
+        {
+          "source_revision": "a3c96fefcfecaacf4360d5679aa3a68341ff2198",
+          "version": "0.5.1"
+        },
+        {
+          "source_revision": "9a8c9c178333825ab014229bc9b6f52f4cc29446",
+          "version": "0.5.2"
+        },
+        {
+          "source_revision": "b976f0e1124ac9eef93205440d99edd1eb36a5f9",
+          "version": "0.5.3"
+        }
+      ],
+      "reason": "Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return."
     }
   },
   "skill:pugh-matrix": {

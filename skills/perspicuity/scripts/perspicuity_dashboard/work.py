@@ -8,12 +8,15 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 
 import yaml
 
 
 FORMAT = "perspicuity-work/1"
-DEFAULT_SOURCES = ("Decisions", "docs/initiatives", "docs/outreach")
+PLAN_FORMAT = "perspicuity-plan/1"
+FORMATS = (FORMAT, PLAN_FORMAT)
+DEFAULT_SOURCES = ("Decisions", "docs/initiatives", "docs/outreach", "docs/plans")
 RECORD_STATES = {"open", "closed"}
 WORK_STATES = {"not_started", "active", "waiting", "submitted", "in_review", "accepted", "stopped"}
 QUEUE_STATES = ("blocked", "needs_you", "ready", "waiting", "in_review", "done", "closed", "unclassified")
@@ -68,25 +71,38 @@ def frontmatter(text):
 
 
 def current_format(header):
-    """Inspect the format node before strict loading, so legacy records stay out."""
+    """Return the declared format when this convention governs the document.
+
+    Returns None for anything else, so a legacy record, an unrelated Markdown file
+    and a document type added later all stay out without being read as a record.
+    """
     try:
         node = yaml.compose(header, Loader=yaml.SafeLoader)
     except yaml.YAMLError:
         # An exact plain/quoted marker lets malformed current headers remain visible.
-        return bool(re.search(
-            r"(?m)^format:[ \t]*(['\"]?)perspicuity-work/1\1[ \t]*(?:#.*)?$", header
-        ))
-    return isinstance(node, yaml.MappingNode) and any(
-        isinstance(key, yaml.ScalarNode) and key.value == "format"
-        and isinstance(value, yaml.ScalarNode) and value.value == FORMAT
-        for key, value in node.value
-    )
+        match = re.search(
+            r"(?m)^format:[ \t]*(['\"]?)(perspicuity-(?:work|plan)/1)\1[ \t]*(?:#.*)?$", header
+        )
+        return match.group(2) if match else None
+    if not isinstance(node, yaml.MappingNode):
+        return None
+    for key, value in node.value:
+        if (isinstance(key, yaml.ScalarNode) and key.value == "format"
+                and isinstance(value, yaml.ScalarNode) and value.value in FORMATS):
+            return value.value
+    return None
 
 
 LABELS = (
-    "Principal and decider", "Principal", "Decider", "Work owner", "Decision",
-    "Work scope", "Work", "Outcome", "Next", "Blocked", "Waiting on", "Dependency", "Review due", "Next check", "Budget", "Closure",
+    "Mode", "Principal and decider", "Principal", "Decider", "Work owner", "Plan owner", "Decision",
+    "Work scope", "Plan scope", "Done when", "Ship to", "Work", "Outcome", "Next", "Blocked",
+    "Waiting on", "Dependency", "Review due", "Next check", "Budget", "Closure", "Received", "Giver", "Verdict",
 )
+MODES = ("plan", "run", "review", "accept")
+# Records from skill 0.6.0 carry the fields below; earlier records are read as written.
+FIELD_CHECKS_FROM = (0, 6, 0)
+GRANT_FIELDS = ("For", "Serves", "Intent", "Done when", "Ship to", "Includes", "Tolerances",
+                "Escalate if", "Return to", "Accepted by", "Granted by")
 FIELD = re.compile(
     r"(?:^|[ \t]+)\*{0,2}(" + "|".join(LABELS) + r")\*{0,2}:\*{0,2}[ \t]*",
     re.M,
@@ -107,6 +123,163 @@ def body_field(body, name, current_only=True):
             value = re.split(r"\n\s*\n|\n#{1,6} ", body[match.end():end], maxsplit=1)[0]
             return " ".join(value.split()) or "unknown"
     return "unknown"
+
+
+def read_mode(body):
+    """Read the declared working mode, so a mode is visible to the tools.
+
+    Accepts the emphasis the corpus uses, e.g. 'Mode: **Plan.** The sequence stops...'.
+    Returns None when no mode is declared, which is not an error: older records have none.
+    """
+    match = re.search(r"(?m)^\*{0,2}Mode\*{0,2}\s*:\s*\*{0,2}\s*([A-Za-z]+)", body)
+    if not match:
+        return None
+    value = match.group(1).strip().strip("*").lower()
+    return value if value in MODES else None
+
+
+def skill_version_tuple(value):
+    """Read a skill_version such as 0.6.0 as a comparable tuple, or None."""
+    match = re.fullmatch(r"\s*(\d+)\.(\d+)\.(\d+)\S*\s*", str(value if value is not None else ""))
+    return tuple(int(part) for part in match.groups()) if match else None
+
+
+def labelled_line(text, label, table=False):
+    """True when some line opens with the label, allowing a list marker and emphasis.
+
+    With table=True a table column headed by the label also counts.
+    """
+    name = r"Includes(?:[ \t]*/[ \t]*Excludes)?" if label == "Includes" else re.escape(label)
+    if re.search(r"(?m)^[ \t]*(?:[-*][ \t]+)?\*{0,2}" + name + r"\*{0,2}[ \t]*:", text):
+        return True
+    return table and bool(re.search(r"(?m)^[ \t]*\|.*\|[ \t]*\*{0,2}" + name + r"\*{0,2}[ \t]*\|", text)
+                          or re.search(r"(?m)^[ \t]*\|[ \t]*\*{0,2}" + name + r"\*{0,2}[ \t]*\|", text))
+
+
+def is_selected(decision):
+    """True when the Decision line reports a selection, in any of the corpus's phrasings."""
+    text = decision.replace("*", "").strip().lower()
+    if unspecified(text):
+        return False
+    return (bool(re.search(r"\bselect(?:s|ed)\b", text))
+            and not re.match(r"(?:pending|recommended|none|inherited)\b", text)
+            and not re.search(r"\bnot\b(?:[ \t]+\w+){0,2}[ \t]+select(?:s|ed)\b", text))
+
+
+def grant_blocks(body):
+    """Each grant card: a line opening 'Grant <id>:' up to the next grant or heading.
+
+    Template placeholders such as 'Grant <id>:' are not grants and are skipped.
+    """
+    starts = list(re.finditer(
+        r"(?m)^[ \t]*\*{0,2}Grant[ \t]+([A-Za-z0-9][\w.-]*)(?:[ \t]*\([^)\n]*\))?\*{0,2}[ \t]*:", body))
+    blocks = []
+    for index, match in enumerate(starts):
+        end = starts[index + 1].start() if index + 1 < len(starts) else len(body)
+        heading = re.search(r"(?m)^#{1,6} ", body[match.end():end])
+        if heading:
+            end = match.end() + heading.start()
+        block = body[match.start():end]
+        # A card names its actor; a line such as 'Grant scope: ...' is prose, not a card.
+        if labelled_line(block, "For"):
+            blocks.append((match.group(1), block))
+    return blocks
+
+
+def field_warnings(record, body, version):
+    """Report missing 0.6.0 fields. These never fail --check, and older records get none."""
+    if version is None or version < FIELD_CHECKS_FROM:
+        return []
+    messages = []
+    if is_selected(record["decision"]):
+        if not labelled_line(body, "Decided by", table=True):
+            messages.append("a selected decision names no Decided by line")
+        if not labelled_line(body, "Reconsider if", table=True):
+            messages.append("a selected decision carries no Reconsider if line")
+    for identifier, block in grant_blocks(body):
+        missing = [label for label in GRANT_FIELDS if not labelled_line(block, label)]
+        if missing:
+            messages.append(f"grant {identifier} lacks: " + ", ".join(missing))
+    if record["kind"] == "plan" and record.get("units"):
+        for column in ("serves", "accepted by"):
+            if column not in record["units"][0]:
+                messages.append(f"the Units table has no {column.capitalize()} column")
+    tables = (("Review", "criterion"),) if record["kind"] == "plan" else (("Act", "result"), ("Review", "criterion"))
+    for heading, key in tables:
+        rows = table_rows(body, heading, (key,))
+        if rows and "serves" not in rows[0]:
+            messages.append(f"the {heading} table has no Serves column")
+    return messages
+
+
+def unit_commits(root, identifier):
+    """List the commits whose Perspicuity-Record trailer names this record, newest first.
+
+    Read-only. Returns None when git cannot answer for this root.
+    """
+    pattern = "^Perspicuity-Record: " + identifier.replace(".", r"\.") + "$"
+    try:
+        completed = subprocess.run(
+            ["git", "-C", str(root), "log", "-E", "--grep", pattern,
+             "--format=%h%x09%aI%x09%(trailers:key=Perspicuity-Unit,valueonly,separator=%x2C)%x09%s"],
+            capture_output=True, text=True, timeout=30, check=False)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if completed.returncode != 0:
+        return None
+    commits = []
+    for line in completed.stdout.splitlines():
+        parts = line.split("\t", 3)
+        if len(parts) == 4:
+            commits.append({"commit": parts[0], "at": parts[1], "unit": parts[2].strip() or None,
+                            "subject": parts[3]})
+    return commits
+
+
+def table_rows(body, heading, columns):
+    """Read one Markdown table under a heading, returning a dict per row.
+
+    Rows under the plan format only. A missing heading, a missing column or a
+    placeholder cell yields nothing rather than a guess.
+    """
+    match = re.search(r"(?m)^##[ \t]+" + re.escape(heading) + r"[ \t]*$", body)
+    if not match:
+        return []
+    section = re.split(r"(?m)^## ", body[match.end():], maxsplit=1)[0]
+    header = None
+    rows = []
+    for line in section.splitlines():
+        line = line.strip()
+        if not line.startswith("|"):
+            if header is not None and rows:
+                break
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if header is None:
+            header = [cell.lower() for cell in cells]
+            continue
+        if all(set(cell) <= set("-: ") for cell in cells):
+            continue
+        if len(cells) != len(header):
+            continue
+        row = dict(zip(header, cells))
+        if any(not plain_placeholder(row.get(name, "")) for name in columns):
+            rows.append(row)
+    return rows
+
+
+def plain_placeholder(value):
+    """True when a cell is empty or still holds a template placeholder."""
+    text = (value or "").strip()
+    return text in ("", "-") or (text.startswith("<") and text.endswith(">"))
+
+
+def unit_rows(body):
+    return table_rows(body, "Units", ("unit",))
+
+
+def repository_rows(body):
+    return table_rows(body, "Repositories", ("alias", "repository"))
 
 
 def closure_text(body):
@@ -182,17 +355,24 @@ def derive_queue(record, check_status):
 
 def parse_record(text, path):
     header, body = frontmatter(text)
-    if header is None or not current_format(header):
+    declared = None if header is None else current_format(header)
+    if not declared:
         return None
+    is_plan = declared == PLAN_FORMAT
     closed_header = body is not None
     body = body or ""
     record = {
         "path": path, "id": None, "revision": None, "updated": "unknown",
+        "format": declared, "kind": "plan" if is_plan else "record",
         "record_status": "unclassified", "work_status": "unclassified",
+        "plan_status": None,
         "principal": body_field(body, "Principal and decider"),
-        "work_scope": body_field(body, "Work scope"),
-        "work_owner": body_field(body, "Work owner"),
+        "work_scope": body_field(body, "Plan scope" if is_plan else "Work scope"),
+        "work_owner": body_field(body, "Plan owner" if is_plan else "Work owner"),
         "decision": body_field(body, "Decision"),
+        "mode": read_mode(body),
+        "done_when": body_field(body, "Done when"),
+        "ship_to": body_field(body, "Ship to"),
         "work": body_field(body, "Work"),
         "outcome": body_field(body, "Outcome"),
         "dependency": body_field(body, "Dependency"),
@@ -202,7 +382,12 @@ def parse_record(text, path):
         "next_check_date": None,
         "review_due_date": None,
         "next": body_field(body, "Next"), "issues": [],
+        "skill_version": None, "field_warnings": [],
     }
+    if is_plan:
+        # A plan declares its repositories and its units; the units keep their own state.
+        record["units"] = unit_rows(body)
+        record["repositories"] = repository_rows(body)
     if record["dependency"] == "unknown":
         record["dependency"] = body_field(body, "Blocked")
     if record["waiting_on"] == "unknown":
@@ -217,6 +402,7 @@ def parse_record(text, path):
     if not isinstance(data, dict):
         record["issues"].append("invalid front matter: header must be a mapping")
         return record
+    record["skill_version"] = None if data.get("skill_version") is None else str(data["skill_version"])
     identifier = data.get("id")
     if not isinstance(identifier, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]*", identifier):
         record["issues"].append("id must be a nonempty identifier without spaces or placeholders")
@@ -239,7 +425,8 @@ def parse_record(text, path):
             record["review_due_date"] = iso_date(data["review_due"]).isoformat()
         except ValueError as error:
             record["issues"].append(f"invalid review_due: {error}")
-    for field, allowed in (("record_status", RECORD_STATES), ("work_status", WORK_STATES)):
+    for field, allowed in (("record_status", RECORD_STATES), ("work_status", WORK_STATES),
+                           ("plan_status", WORK_STATES)):
         if field not in data:
             continue
         value = data[field]
@@ -247,11 +434,23 @@ def parse_record(text, path):
             record["issues"].append(f"invalid {field}: {value!r}")
         else:
             record[field] = value
+    if is_plan:
+        # A plan carries plan_status in place of work_status; the queue reads one field.
+        if record["plan_status"] is not None:
+            record["work_status"] = record["plan_status"]
+        # A closed plan declares record_status: closed. Otherwise a plan carrying a
+        # decision is open, because the plan owns the commitment rather than a record.
+        if record["record_status"] == "unclassified" and not unspecified(record["decision"]):
+            record["record_status"] = "open"
     classified = record["record_status"] != "unclassified" or record["work_status"] != "unclassified"
     if classified and unspecified(record["work_scope"]):
-        record["issues"].append("classified records require a named Work scope in Current position")
+        record["issues"].append(
+            "classified plans require a named Plan scope in Current position" if is_plan
+            else "classified records require a named Work scope in Current position")
     if record["record_status"] == "open" and unspecified(record["next"]):
-        record["issues"].append("open records require a Next action and actor in Current position")
+        record["issues"].append(
+            "open plans require a Next action and actor in Current position" if is_plan
+            else "open records require a Next action and actor in Current position")
     if record["work_status"] == "waiting" and unspecified(record["dependency"]):
         record["issues"].append("blocked work requires an explicit Dependency in Current position")
     if record["work_status"] == "in_review":
@@ -269,6 +468,24 @@ def parse_record(text, path):
         closure = closure_text(body)
         if unspecified(closure):
             record["issues"].append("closed records require an explicit Closure explanation")
+    if is_plan:
+        # The section must exist; its rows may still be template placeholders, which
+        # are not units yet and are dropped when the table is read.
+        if not re.search(r"(?m)^##[ \t]+Units[ \t]*$", body):
+            record["issues"].append("a plan requires a Units section")
+        # A unit's repository cell may name several aliases; local is the plan's own repository.
+        named = set()
+        for row in record["units"]:
+            for value in re.split(r"[,;/]", row.get("repository", "")):
+                value = value.strip().strip("`")
+                if value and value.lower() not in ("local", "-", "—"):
+                    named.add(value)
+        aliases = {row.get("alias", "").strip().strip("`") for row in record["repositories"]}
+        unknown = sorted(named - aliases)
+        if unknown:
+            record["issues"].append(
+                "units name repositories the plan does not declare: " + ", ".join(unknown))
+    record["field_warnings"] = field_warnings(record, body, skill_version_tuple(record["skill_version"]))
     return record
 
 
@@ -287,7 +504,7 @@ def scan(root, sources=None, as_of=None):
         "as_of": as_of.isoformat(),
         "coverage": {"markdown_files": 0, "current_records": 0, "other_markdown": 0, "non_markdown": 0},
         "exclusion_policy": sorted(EXCLUDED_DIRS) + ["version/revision/snapshot directories", "symlinks", "outside root"],
-        "exclusions": [], "records": [], "issues": [], "warnings": [],
+        "exclusions": [], "records": [], "issues": [], "warnings": [], "field_warnings": [],
     }
     visited = set()
 
@@ -382,6 +599,8 @@ def scan(root, sources=None, as_of=None):
             })
         for message in record["issues"]:
             issue(record["path"], message)
+        for message in record["field_warnings"]:
+            result["field_warnings"].append({"path": record["path"], "message": message})
     result["coverage"]["current_records"] = len(result["records"])
     result["coverage"]["unclassified_records"] = sum(
         "unclassified" in (record["record_status"], record["work_status"])
@@ -456,6 +675,23 @@ def markdown(result):
     if result["warnings"]:
         lines.extend(["", "## Checkpoint warnings", ""])
         lines.extend(f"- {item['path']}: {item['message']}" for item in result["warnings"])
+    if result.get("field_warnings"):
+        lines.extend(["", "## Field warnings", "",
+                      "Fields skill 0.6.0 asks for are missing. These warnings never fail --check."])
+        lines.extend(f"- {item['path']}: {item['message']}" for item in result["field_warnings"])
+    if any("commits" in record for record in result["records"]):
+        lines.extend(["", "## Commits by unit", "",
+                      "Read from Perspicuity-Record and Perspicuity-Unit commit trailers."])
+        for record in result["records"]:
+            if "commits" not in record:
+                continue
+            if record["commits"] is None:
+                lines.extend(["", "### " + cell(record["path"]), "", "Git could not be read for this root."])
+            elif record["commits"]:
+                lines.extend(["", "### " + cell(record["path"]), "",
+                              "| Unit | Commit | At | Subject |", "|---|---|---|---|"])
+                lines.extend("| " + " | ".join(cell(item[key]) for key in ("unit", "commit", "at", "subject")) + " |"
+                             for item in record["commits"])
     lines.extend(["", "## Mechanical checks", ""])
     if result["issues"]:
         lines.extend(f"- {item['path']}: {item['message']}" for item in result["issues"])
@@ -479,6 +715,8 @@ def main(argv=None):
                         help="Show open due and unscheduled records; default date is local today")
     parser.add_argument("--json", action="store_true", help="Print JSON instead of Markdown")
     parser.add_argument("--check", action="store_true", help="Exit 1 for mechanical errors, including hidden records")
+    parser.add_argument("--commits", action="store_true",
+                        help="List each record's commits by their Perspicuity-Unit trailer")
     args = parser.parse_args(argv)
     try:
         result = scan(args.root, args.source, as_of=args.due)
@@ -486,6 +724,10 @@ def main(argv=None):
         parser.error(str(error))
     output = filtered(result, args.record_status, args.work_status, due=args.due is not None,
                       queue_state=args.queue_state)
+    if args.commits:
+        for record in output["records"]:
+            if record["id"]:
+                record["commits"] = unit_commits(result["root"], record["id"])
     print(json.dumps(output, indent=2) if args.json else markdown(output))
     return 1 if args.check and result["issues"] else 0
 

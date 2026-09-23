@@ -30,7 +30,7 @@ Act draws on project management.
 Review draws on evaluation and adaptive management.
 Inquiry and iteration can occur across the stages.
 The same skill supports human-retained and delegated choices.
-It declares a working mode: `Plan` stops at ratified decisions and registered grants, and `Run` executes granted units and returns their results.
+It declares a working mode: `Plan` stops at ratified decisions and registered grants, `Run` executes granted units and returns their results, and `Review` judges a return or a finished plan and stops at a verdict.
 It requires an inspectable decision basis while allowing any suitable analytical method.
 The new `perspicuity-work/1` record convention remains distinct from historical `spec: 0.2` records.
 Existing Decide and Decide Agent names retain their historical meanings.
@@ -128,12 +128,42 @@ _Avoid_: Plan when naming this Perspicuity concept.
 **Decision record**:
 An account of a decision and its basis, including objectives, alternatives, consequences, choice, and conditions for reconsideration.
 
+**Plan**:
+An account of the units that must happen in an order, the relation that orders them, and the repositories they span, under `perspicuity-plan/1`.
+A plan carries the frame its units share and points at each unit's record; it decides nothing itself and restates no unit's state.
+It is the only place sequence is recorded: a work unit's eligibility is read from the plan's relations together with the records' own states.
+A plan may span repositories and may describe moving content between them.
+_Distinguish_: a single intention's work stays in its own record; the shared frame and the ordering across units belong here.
+
 **Working mode**:
-The declared purpose of the current work: `Plan` establishes and ratifies choices and registers the work they authorize; `Run` executes granted units and returns their results.
+The declared purpose of the current work: `Plan` establishes and ratifies choices and registers the work they authorize; `Run` executes granted units and returns their results; `Review` judges work already done and records a verdict, either on one return another actor sent or on a whole plan at its close-out.
 The mode sets the stopping condition, not the depth of analysis or the authority.
 A planning request stops at its boundary even when permission to act already exists.
 The mode is recorded in the active record's Current position.
 The mode name `Plan` does not name an Initiative and is not a Work Plan interval; read those terms by their own entries.
+A mode and a format are distinct: the mode is a session's purpose, the format is an artifact's header contract.
+`Review` adds no format; a review of a return is a record that points at what it received, and a plan's close-out is part of the plan.
+The `Review` mode is the Review stage carried out by a receiver or across a plan.
+Records before skill 0.6.0 may declare `Accept`, which reads as `Review` of a return.
+
+**Done when**:
+The registered criterion that shows a unit of work is complete.
+It is internal to the work and checkable by its author.
+Done is not shipped: a thing can be done and verified without having reached anywhere.
+
+**Ship to**:
+The registered destination the work must reach, and whoever can verify that it arrived.
+It is external to the work and cannot be checked by its author.
+Evidence for a shipping claim comes from outside the author's environment; a commit message, a changelog or the author's own tests cannot establish it.
+Where the destination is another actor, that actor's acceptance is the evidence, and until it exists the record names that actor as its outstanding dependency.
+
+**Acceptance**:
+A verdict by a receiving actor that work arrived and is acceptable, recorded in the receiver's own record.
+It settles two claims separately: arrival, whether the work is present, complete and readable; and acceptance, whether it meets the criteria its giver registered, is internally consistent and complete, and is coherent with the project's direction.
+It is held in `Review` mode, and its verdict is accepted, accepted with conditions, or sent back.
+A sibling unit or session may accept another's work; that is the ordinary case.
+A receiver that produced the artifact, or that stands to gain from accepting it, has established arrival rather than acceptance, and says so.
+An acceptance does not substitute for the principal's ratification, which changes what may be done rather than where the work is.
 
 **Ratified decision**:
 A selection saved with its comparison, reason, decider and basis revision.
@@ -142,14 +172,37 @@ It permits no work by itself: a work unit becomes executable only when a grant n
 
 **Pickup plan**:
 The plan registered for one granted unit at the time that unit is taken up.
-It states how the unit will be carried out and what will show it is done.
+It states how the unit will be carried out, how that route serves the grant's intent, and what will show it is done.
 The first unit's pickup plan is registered at planning time; each later one waits for its own pickup because the earlier units change what is known.
-Adapting its route stays with the actor; a changed problem, comparison or selection returns to the decider.
+Adapting its route stays with the actor; a changed problem, comparison or selection escalates to the decider.
 
 **Escalation**:
-A granted unit's return to the decider when the work changes the problem, the comparison or the selection.
+A granted unit's referral to the decider when the work changes the problem, the comparison or the selection, when a tolerance is exceeded, or when an excluded target is needed.
 The boundary is keyed to what changed, not to the actor's confidence, because an unstated boundary produces drift and one keyed to confidence escalates everything.
 Escalation changes no authority by itself; the unit waits inside its existing grant until the decider responds.
+
+**Tolerance**:
+A limit on a granted unit's wall time, attempts or spend, set by the grantor.
+Exceeding it stops the unit and escalates it; it is a stop rule, not a budget the actor must use.
+
+**Claim**:
+An actor's registered hold on a unit at pickup, with `Claimed by:` and `since:`.
+Without a time tolerance on the grant, only the grantor or the actor running the plan may take over a claim.
+One actor writes a record at a time; a claim older than the grant's time tolerance, with no return, may be taken over after checking the earlier attempt's uncertain effects.
+
+**Unit state**:
+A work unit's position: planned, ratified, granted, active, submitted or accepted, with waiting and stopped as side states.
+The words reuse `work_status` values where both exist; records before skill 0.6.0 may use `picked up` for active and `returned` for submitted.
+
+**Short-form choice**:
+A reversible choice inside a grant, recorded in three lines: what was chosen over what, for which question and why; `Decided by:`; and `Reconsider if:`.
+A choice that is hard to reverse, commits the principal externally or would change a grant takes the full basis.
+
+**Plan close-out**:
+The `Review` of a whole plan: what was supposed to happen, what happened, why they differ and what changes, with the delegation measures computed from the unit records and one verdict, close, correct or reconsider.
+
+**Commit trailer**:
+The `Perspicuity-Record:` and `Perspicuity-Unit:` lines on a commit made under a grant, which let `git log` list what was built for a unit and when.
 
 **Objective record**:
 A detailed definition of an objective, including its meaning, possible assessment, contextual relationships, and source of agreement.
@@ -183,9 +236,12 @@ They describe linked evidence, not additional decision statuses or automatic aut
 **Grant**:
 A source instruction that authorizes a named actor's operation on a target within stated limits.
 Selection authority applies only when the source supplies it.
-Within the Perspicuity skill, a grant is registered for one work unit and names the actor, the work included, the work excluded and the stop condition.
+Within the Perspicuity skill, a grant is registered for one work unit as a grant card: the actor, the objectives it serves, its intent, done when, ship to, the work included and excluded, tolerances, escalation triggers, return destination, acceptor and grantor.
+Done when, tolerances and escalation triggers together are its stop condition.
+For a batch, the principal ratifies the grants they own in one act, at the end of `Plan`.
 It is the one permission another actor may rely on without reading the whole parent account.
-It supplies no authority to select, to change scope or to act outside the named work, and it is not a general permission for the intention.
+It supplies no authority to choose between the alternatives of the decision it implements, to make a hard-to-reverse choice, to change scope or to act outside the named work, and it is not a general permission for the intention.
+Under the default allocation, its worker makes reversible choices inside its includes.
 This skill use is distinct from a host authorization record, which carries its own terms.
 
 **Task**:

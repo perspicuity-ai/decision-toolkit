@@ -1,13 +1,13 @@
-# Package contents for 0.5.0-preview.13
+# Package contents for 0.6.0-preview.3
 
 This early preview contains one user-facing skill, `perspicuity`.
 It supports a person or a delegated agent through Understand, Choose, Act and Review.
 One evolving Markdown record carries the context between sessions.
-Selected source revision: `8ccc2537ffc35d7c0f8b99ba6bf7c6b5642525ba`.
+Selected source revision: `f094d528fed77b77057f46c3c6ff5f2372855d39`.
 
 ## Skill and record
 
-- Skill version: `0.5.0`.
+- Skill version: `0.6.0`.
 - Record format: `perspicuity-work/1`.
 - The format is documented Markdown. No JSON schema or database is required.
 - The entrypoint links to analysis guidance, record guidance, a template, and a fictional example.
@@ -44,6 +44,6 @@ The dashboard runs locally when started. The package supplies no hosted service 
 
 | Component | Version |
 | --- | --- |
-| glossary | 0.1.4 |
+| glossary | 0.1.5 |
 | licensing | 0.1.1 |
-| skill:perspicuity | 0.5.0 |
+| skill:perspicuity | 0.6.0 |

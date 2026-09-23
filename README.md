@@ -6,7 +6,8 @@ One evolving Markdown record keeps the reasons connected to the work and its res
 
 The skill asks the agent to make its decision basis inspectable.
 The agent can choose a suitable analytical method.
-Understand, Choose, Act and Review are responsibilities that can repeat as the work develops.
+The work moves through Frame and Decide, Act and Review, stages that can repeat as the work develops.
+Each session works in one mode, Plan, Run or Review, and stops at that mode's boundary.
 You can add specialist skills when the work needs them.
 
 ## Download

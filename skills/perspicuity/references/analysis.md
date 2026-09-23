@@ -4,9 +4,15 @@ Use these criteria within Frame and Decide.
 Choose the analytical method that fits the case.
 Keep the material basis inspectable without narrating every step.
 
+Set the depth by the stakes and by how hard the choice is to reverse.
+A choice that is cheap to undo and sits inside a grant takes the record guide's [short form](record.md#build-the-decision-chain).
+A choice that is hard to undo, commits the principal externally or would change a grant takes the full basis below, and goes to the principal unless a grant delegates it.
+
 ## Frame
 
 Keep the request and chosen frame visible.
+Sort the problem into what is given, what is decided now and what is decided later.
+Each later item becomes a planned decision unit, in the record's index or in a plan.
 Test whether a proposed means serves the principal's intended outcome.
 Consider broader causes, alternatives, affected interests or horizons when the current frame could miss a material consequence.
 Adopt a useful reframe within the delegation.
@@ -21,6 +27,7 @@ Establish what the decider wants to achieve before developing and evaluating alt
 Reuse objectives from the delegation and applicable standing values.
 Ask why a proposed objective matters to distinguish desired ends from means.
 Distinguish valued outcomes from the means proposed to achieve them.
+Give each objective an identifier (O1, O2 …) so units, grants and criteria can cite it.
 Give material objectives usable measures, preferred directions and relevant horizons.
 Attribute objectives and preferences to their sources.
 Keep proposed criteria distinct from agreed criteria.
@@ -120,7 +127,9 @@ Ordered labels alone do not establish equal intervals or interchangeable value a
 Use direct comparison or thresholds when they express the preferences adequately.
 Keep unknown consequences distinct from neutral scores.
 
-Explain why the conclusion follows and what would warrant reconsideration.
+Explain why the conclusion follows.
+Write what would warrant reconsideration as `Reconsider if:` beside the selection.
+A premortem helps: assume the choice failed, and name the likeliest reason.
 Compare the likely practical benefit of further inquiry with its effort and delay.
 Stop when the available basis supports action at the actual stakes.
 Retain a conditional conclusion when a material gap remains.

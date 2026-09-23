@@ -1,6 +1,6 @@
 # Authorship and licence
 
-Copyright 2026 David Nelson-Elske, for his original contributions.
+Copyright 2026 David Nelson Elske, for his original contributions.
 Apache License 2.0 applies to the original material where the contributors hold the required rights.
 Read LICENSE for the terms.
 

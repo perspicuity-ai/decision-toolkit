@@ -1,14 +1,14 @@
-# Changelog for 0.5.0-preview.13
+# Changelog for 0.6.0-preview.3
 
-Source revision: `8ccc2537ffc35d7c0f8b99ba6bf7c6b5642525ba`.
-Comparison distribution: `0.4.2`.
+Source revision: `f094d528fed77b77057f46c3c6ff5f2372855d39`.
+Comparison distribution: `0.5.0`.
 Record format: `perspicuity-work/1` → `perspicuity-work/1`.
 
 ## Changes in this candidate
 
-- Distribution `0.4.2` → `0.5.0` (breaking). Carry skill 0.5.0, which declares a working mode and makes a work unit executable only through a registered grant. The unit ladder and the grant boundary change how authorized work is recorded, so the distribution declares a breaking component change. The dashboard, its launcher and its Python requirements remain outside this package.
-- glossary: `0.1.3` → `0.1.4` (patch). Record the working mode, ratified decision, pickup plan and escalation terms, and distinguish the unit grant from a host authorization record.
-- skill:perspicuity: `0.2.0` → `0.5.0` (breaking). Declare a working mode, so a planning session stops at ratified decisions and registered grants while a run executes granted units and returns their results. Add the unit ladder, the grant with its includes, excludes and stop condition, pickup registration with its escalation boundary, and a disclosure threshold. Revise the terminology and bring the record template to the same revision. The dashboard is out of this package's scope. The package also carries the Jev comparison tool, which the guide links to and which needs no added dependency.
+- Distribution `0.5.0` → `0.6.0` (breaking). Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly.
+- glossary: `0.1.4` → `0.1.5` (feature). Define plan, the Review mode, done when, ship to, acceptance, tolerance, claim, unit state, short-form choice, plan close-out and commit trailer, and describe the grant as a grant card.
+- skill:perspicuity: `0.5.0` → `0.6.0` (breaking). Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return.
 
 1 components retain their versions and files.
 
@@ -19,6 +19,7 @@ Component entries do not establish which earlier distribution included each chan
 
 ### distribution
 
+- `0.6.0` (breaking). Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly.
 - `0.5.0` (breaking). Carry skill 0.5.0, which declares a working mode and makes a work unit executable only through a registered grant. The unit ladder and the grant boundary change how authorized work is recorded, so the distribution declares a breaking component change. The dashboard, its launcher and its Python requirements remain outside this package.
 - `0.4.2` (patch). Add the preview download destination and distinguish the three release assets. Document local Codex installation, Linux verification and complete-folder installation for other compatible hosts. Keep skill 0.2.0 unchanged.
 - `0.4.1` (patch). Clarify preview installation, attribution and evidence limits in package documentation. Remove internal publication workflow from user-facing descriptions. Keep skill 0.2.0 and its five authored files unchanged.
@@ -44,6 +45,7 @@ Component entries do not establish which earlier distribution included each chan
 
 ### glossary
 
+- `0.1.5` (feature). Define plan, the Review mode, done when, ship to, acceptance, tolerance, claim, unit state, short-form choice, plan close-out and commit trailer, and describe the grant as a grant card.
 - `0.1.4` (patch). Record the working mode, ratified decision, pickup plan and escalation terms, and distinguish the unit grant from a host authorization record.
 - `0.1.3` (patch). Clarify that record criteria define the required account while analysis methods and presentation depend on the case.
 - `0.1.2` (feature). Define the single-skill workflow and evolving work record while preserving historical terminology.
@@ -226,6 +228,10 @@ Component entries do not establish which earlier distribution included each chan
 
 ### skill:perspicuity
 
+- `0.6.0` (breaking). Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return.
+- `0.5.3` (feature). Add Accept as a third working mode for a receiver's verdict, a named shipping destination, and the delegation obligation. This local source revision preceded the packaged candidate.
+- `0.5.2` (patch). Add review_due to the plan template and complete the plan format's first run. This local source revision preceded the packaged candidate.
+- `0.5.1` (feature). Add the perspicuity-plan/1 format and its template for units that must happen in an order or span repositories, and keep sequence out of the work record. This local source revision preceded the packaged candidate.
 - `0.5.0` (breaking). Declare a working mode, so a planning session stops at ratified decisions and registered grants while a run executes granted units and returns their results. Add the unit ladder, the grant with its includes, excludes and stop condition, pickup registration with its escalation boundary, and a disclosure threshold. Revise the terminology and bring the record template to the same revision. The dashboard is out of this package's scope. The package also carries the Jev comparison tool, which the guide links to and which needs no added dependency.
 - `0.4.1` (patch). Make delivered work close and show what is blocking it. This local source revision preceded the packaged candidate.
 - `0.4.0` (breaking). Build three-stage guidance with prospective records. This local source revision preceded the packaged candidate.
