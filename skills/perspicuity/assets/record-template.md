@@ -2,7 +2,7 @@
 format: perspicuity-work/1
 id: <stable identifier>
 revision: 1
-skill_version: 0.6.0
+skill_version: 0.8.1
 updated: <date>
 record_status: open
 work_status: not_started
@@ -16,13 +16,23 @@ work_status: not_started
 
 ## Current position
 
+<This section is the principal's five-minute brief. Rewrite it at every stop. Each line at most 280 characters, the section at most 600 words. Gloss every identifier at first use, as in Objectives: `U1 short gloss · U2 short gloss`. Link detail; no tables here.>
+
 Mode: <Plan, Run or Review, with the reason when it matters>
 
 Principal and decider: <objectives owner / chooser>
 
 Work owner: <actor>
 
-Decision: <state / basis revision / pending owner or no-choice reason>
+Ask: <the principal's request, in their terms>
+
+Objectives: <O1 phrase · O2 phrase …, or the objectives the work serves>
+
+Options: <the alternatives compared, one phrase each; omit when none were compared>
+
+Decision: <state and the decisive reason / basis revision / pending owner or no-choice reason; for an idea: pending, is it worth more time, and in what shape?>
+
+Reconsider if: <the observation that reopens the choice; omit when nothing is chosen or recommended>
 
 Work scope: <the delivery, named so a reader can tell whether it is finished>
 
@@ -33,6 +43,8 @@ Ship to: <where it must arrive, and who can verify that it did>
 Work: <current finding>
 
 Outcome: <observed result or unknown>
+
+Needs from you: <each open question for the principal, two to four options, recommendation first; or nothing>
 
 Next: <one actor / one action / trigger>
 

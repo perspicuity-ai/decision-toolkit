@@ -21,6 +21,29 @@ Obtain additional authority for commitments outside the grant.
 Record a material frame change and its reason without narrating each attempt.
 After a material reframe, reassess objectives, alternatives and existing consequence estimates.
 
+## Explore an idea
+
+Use this opening when the principal brings an idea that is not yet a decision.
+Open a `Plan` record with `Decision: pending` and the day-one question: is this idea worth more of the principal's time, and in what shape?
+Agree a time limit with the principal, or state one that suits the stakes.
+Keep the opening's findings in that record.
+
+1. **Intent.** State what the idea is for. Treat the idea itself as a means.
+2. **Widen.** Develop three to six routes to that intent, including no action and a cheap version.
+3. **Numbers.** State what success would have to look like, then what must be true to reach it. Give each material assumption a rough range, and label it a guess, an estimate or an observation.
+4. **Kill tests.** Screen each material assumption with two questions. Could the answer change the fork or a linked choice? Can useful evidence arrive in time, at a cost that the possible change justifies?
+   Ask the principal first where the principal can answer from memory.
+   Check the idea's premises against the live system and the current records.
+   Research only what passes both questions, as an `evidence` unit that names its switching value: how far the answer must move to change the fork.
+   Close each assumption that fails in one line.
+5. **Fork.** Recommend one exit, and let the principal choose: drop the idea; attach it to an existing record whose decision it serves; frame it as one decision; or write a plan.
+
+Stop at the fork.
+The principal's choice is the ratification that ends this `Plan` session.
+Treat the screen as a qualitative priority, not a numerical value of information.
+Evaluate shared assumptions together when separate changes would hide their combined effect.
+Information that arrives after an irreversible choice cannot improve that choice; value it only for later actions.
+
 ## Elicit values and objectives
 
 Establish what the decider wants to achieve before developing and evaluating alternatives.
@@ -130,7 +153,7 @@ Keep unknown consequences distinct from neutral scores.
 Explain why the conclusion follows.
 Write what would warrant reconsideration as `Reconsider if:` beside the selection.
 A premortem helps: assume the choice failed, and name the likeliest reason.
-Compare the likely practical benefit of further inquiry with its effort and delay.
+Compare the likely practical benefit of further inquiry with its effort and delay, using the [screen](#explore-an-idea) in step 4.
 Stop when the available basis supports action at the actual stakes.
 Retain a conditional conclusion when a material gap remains.
 

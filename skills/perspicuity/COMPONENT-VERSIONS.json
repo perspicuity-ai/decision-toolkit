@@ -16,7 +16,7 @@
     },
     "skill:perspicuity": {
       "files": {
-        "skills/perspicuity/SKILL.md": "5bcb9e4633fa36505733bfece26d0e55051c7e19e1be106b6a3d3262028a22f7",
+        "skills/perspicuity/SKILL.md": "08af84b6b8361c4d4f29b8a65a6f2554941b37cf02defb688b1758451e8c360d",
         "skills/perspicuity/assets/dashboard/app.js": "41f97de20b6db5fe2a61cd21bc843d8f89e1a097f09d2f7d51c105e047a5996f",
         "skills/perspicuity/assets/dashboard/index.html": "043f7bc73c818f1a324cb65ab706dcbc75b023448ca62de87c2754b517140f2b",
         "skills/perspicuity/assets/dashboard/navigation.css": "4e66132c6ee6a233d0b0509182af552b336370164fab8a59c9e6811729de5639",
@@ -25,28 +25,30 @@
         "skills/perspicuity/assets/dashboard/vendor/marked-LICENSE.txt": "8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c",
         "skills/perspicuity/assets/dashboard/vendor/marked.umd.js": "b147274a9ce27d17276587167e49483d719f6893eeca3a3667a59797661d3556",
         "skills/perspicuity/assets/dashboard/vendor/purify.min.js": "f263b05369e050fa175d4ecb9c9358eb4253602d510297adfb31df48b2f1c4d5",
-        "skills/perspicuity/assets/plan-template.md": "1e06e4decca90964996f1f205271fc9fdaaabd661b4c77f34ec12d857b4885b5",
-        "skills/perspicuity/assets/record-template.md": "b292d9112c41b57fd5d9f5f94d2926f3ce29a713c4a12b1c4556a3832e41ef0b",
-        "skills/perspicuity/examples/pipeline.md": "ad9855225d8e436730824667232db9eb3ec2fcd2101c86dcb2b60f846b72771a",
-        "skills/perspicuity/references/analysis.md": "3b78e9567193d5742527fd356fd4ddd4717fac2ef62e8f37c73a1f393e9f6307",
+        "skills/perspicuity/assets/loop-template.md": "918d634000f649dece16c4b4e516f856890472574b59d87d85fa26f7c6019c55",
+        "skills/perspicuity/assets/plan-template.md": "0dea0cfac28562d9919bced346e166a3e5f7ab086629d4ebe77bc74a184bf504",
+        "skills/perspicuity/assets/record-template.md": "d2bde4695be33b32160103a29a522a70a3037f43c82ec99640ce65579ae7d3dd",
+        "skills/perspicuity/examples/pipeline.md": "fcdf61c5b48cc8a645c82729d0195118a902ec8b11b22d8c1ddb060a873ad6e9",
+        "skills/perspicuity/references/analysis.md": "979a1cc455de54ba5ade49320191c3bf2dbc32be4ff4637c97ef490e2a111e40",
         "skills/perspicuity/references/dashboard.md": "b19dfd825fe77dcb5d8f7a758c631ef72674561e65fefc6080d81d335d46f877",
         "skills/perspicuity/references/jev.md": "a13bf3c5016733a1e15b7f4356fbfa98c94a17ce09357936655bb56a31b64469",
-        "skills/perspicuity/references/record.md": "98ff923515520792bb7c928459a35547993a6a2fc39789fed710b6cdff9117b5",
+        "skills/perspicuity/references/record.md": "2a1b80908c80d3caa5a9a90473961d2983d734a5258a5abdea53e9886e466ac0",
+        "skills/perspicuity/scripts/brief_check.py": "f0e7f8865f5b1fddd516a0cb69d59d60ddae71bcbe2d2b025a094e37f522f717",
         "skills/perspicuity/scripts/dashboard.py": "2cd9aade4d3315a60d66a1f5517b2e44a84d8dc417270d0c10a6a3935e53c0c3",
         "skills/perspicuity/scripts/jev.py": "cdb98e85ac0f546ab8c4e08be09bb20121dc21a740bfa97e5e1fdae942ce2a45",
         "skills/perspicuity/scripts/perspicuity_dashboard/__init__.py": "21b78f7db6696d6d7d444793301883956028b45f05571773888ff9f3a52c7973",
         "skills/perspicuity/scripts/perspicuity_dashboard/records.py": "0d651ed33f4858eb516986bccfc91277bb9f4e798bd04109d80583520deef124",
         "skills/perspicuity/scripts/perspicuity_dashboard/server.py": "ff64675792bace1e3d19a0feb04e63f42d5db4a21fe7bb55333991ee29580dd9",
         "skills/perspicuity/scripts/perspicuity_dashboard/tasks.py": "45ed6a1d06ce1a0a28b4dd5e303b3b194f1c0cabd1d3235ca4242e5323bedc0b",
-        "skills/perspicuity/scripts/perspicuity_dashboard/work.py": "3575cd5a08a286ab640dfa01ac65fd2cd76939d53488bb2242b8fdb61ea7478c",
+        "skills/perspicuity/scripts/perspicuity_dashboard/work.py": "8224ad18e8e72bbe489ccc1ce8f4830339bf9454e7d4886a6969129ab2aec39d",
         "skills/perspicuity/scripts/requirements.txt": "b4603b9468ade4d639d2c6f73b89d50e1fa5d227c73ab15be0382cca478513e6"
       },
       "kind": "skill",
-      "version": "0.6.0"
+      "version": "0.8.1"
     }
   },
-  "distribution": "0.6.0",
+  "distribution": "0.7.0",
   "layout": "standalone-perspicuity",
-  "packaging_sha256": "ff38a393dd6df9dded5420d0af6bc8f800b4aa94800d0afbbf944c71d6cd9966",
+  "packaging_sha256": "171864bfd2ae6ea7c48aab9bdab46d01dca80373182924c996b11771783941c7",
   "record_format": "perspicuity-work/1"
 }

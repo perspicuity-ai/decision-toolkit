@@ -8,6 +8,7 @@ The skill asks the agent to make its decision basis inspectable.
 The agent can choose a suitable analytical method.
 The work moves through Frame and Decide, Act and Review, stages that can repeat as the work develops.
 Each session works in one mode, Plan, Run or Review, and stops at that mode's boundary.
+Every record opens with a brief you can read in about five minutes, and the agent asks for each of your choices as one question with a few options and its recommendation.
 You can add specialist skills when the work needs them.
 
 ## Download
@@ -37,7 +38,7 @@ For delegated work, specify which choices the agent can make and what actions it
 Supply the saved record when you resume in a new session.
 Keep linked outputs accessible when the agent needs them for review.
 
-The skill supplies guidance, a record template and an optional local dashboard.
+The skill supplies guidance, record, plan and loop templates, a script that checks each record's brief, and an optional local dashboard.
 Ask your agent to start the Perspicuity dashboard for the current project.
 The dashboard shows that project's work records, tasks, workers and connections.
 It reads local records without model calls.

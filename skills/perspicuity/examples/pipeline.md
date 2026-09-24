@@ -1,8 +1,8 @@
 ---
 format: perspicuity-work/1
 id: example-client-pipeline
-revision: 10
-skill_version: 0.6.0
+revision: 11
+skill_version: 0.8.1
 updated: 2026-10-16
 record_status: open
 work_status: accepted
@@ -17,21 +17,35 @@ No real work or model calls occurred. Prior revision notes remain as document hi
 
 ## Current position
 
-Principal: Morgan, business owner. Decider: agent for the local pilot under Morgan's grant.
-
 Mode: Review, because the pilot is delivered and its benefit reviews are open.
 
-Decision: B at revision 2.
+Principal: Morgan, business owner. Decider: agent for the local pilot, under Morgan's grant in her brief (S1).
 
-Work scope: Build a local pilot from ten supplied prospect records.
+Ask: find two suitable new clients within eight weeks, with less weekly administration and no new software spending.
+
+Objectives: O1 win suitable new clients · O2 less time on administration · O3 no software spending.
+
+Options: A keep scattered notes · B a local tracker with a visible next action and a weekly review.
+
+Decision: selected B at revision 2, by the agent inside S1. It may lower O2 at no cost to O3, and its setup fits the four hours S1 allows.
+
+Reconsider if: administration increases or next actions remain unclear.
+
+Work scope: build a local pilot from Morgan's ten prospect records (P1).
 
 Done when: all ten records and their required fields remain, and Morgan finds each next action.
 
 Ship to: Morgan's own copy of the tracker, verified by Morgan using it for her weekly review.
 
-Work: local pilot T1 delivered and accepted by Morgan. Client benefit remains unknown.
+Work: the local tracker (T1) is delivered and accepted by Morgan.
+
+Outcome: 45 minutes of administration a week and no missed follow-ups so far; no signed clients yet.
+
+Needs from you: nothing now.
 
 Next: Morgan reviews unanswered approaches and responses on October 23, then O1 on November 26.
+
+## Stage times
 
 | Stage | began_at | registered_at / exact basis revision | finished_at |
 | --- | --- | --- | --- |
@@ -140,3 +154,4 @@ Preserve F1, both D2 snapshots and the new evidence. The agent still lacks autho
 - Revision 7, October 16: removes routine Jev preparation while retaining the evidence and pilot basis.
 - Revision 8, October 16: combines Frame and Decide, distinguishes inputs and adds fictional stage times, saved bases and a work plan with prior review criteria.
 - Revision 10, October 16: brings the example to skill 0.6.0. It declares its mode, Done when and Ship to; gives the objectives identifiers, which renames the tracker from O1 to T1; records the selection in the short form with Decided by and Reconsider if; adds Serves and the acceptor to the Act table and the grant card G1; and gives T1 a shipping verdict. The scenario and its evidence are unchanged. Revision 9's note was not recorded.
+- Revision 11, October 16: rewrites Current position as the five-minute brief of skill 0.8.1 and moves the stage table under Stage times. No scenario fact changes.

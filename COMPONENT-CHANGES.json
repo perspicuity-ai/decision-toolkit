@@ -80,6 +80,10 @@
     "0.6.0": {
       "change": "breaking",
       "reason": "Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly."
+    },
+    "0.7.0": {
+      "change": "breaking",
+      "reason": "Carry skill 0.8.1, which makes plans name their finished product as checks before a run and makes a record's Current position a checked five-minute brief. Both add obligations to existing records and plans, so the distribution declares a breaking component change. The package adds the loop template and the brief check."
     }
   },
   "glossary": {
@@ -643,6 +647,36 @@
         }
       ],
       "reason": "Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return."
+    },
+    "0.6.1": {
+      "change": "feature",
+      "reason": "Add an exploration opening for an idea that is not yet a decision: intent, widened routes, rough numbers, screened kill tests, and a fork the principal chooses. This local source revision preceded the packaged candidate."
+    },
+    "0.7.0": {
+      "change": "breaking",
+      "reason": "Make plans closable by a loop: a plan names its finished product in Ships as, as automatic or observer checks; a pre-run gate collects every principal input before Run; a loop ends finished, parked or stopped; one active plan per destination. Adds the loop template. This local source revision preceded the packaged candidate."
+    },
+    "0.8.0": {
+      "change": "breaking",
+      "reason": "Make Current position the principal's five-minute brief, with Ask, Objectives, Options, the decision's reason, Reconsider if and Needs from you, at most 280 characters a line and 600 words, rewritten at every stop and counted by brief_check.py. Ask the principal each choice as one question with two to four options, recommendation first. This local source revision preceded the packaged candidate."
+    },
+    "0.8.1": {
+      "change": "feature",
+      "prior_revisions": [
+        {
+          "source_revision": "de425d73e8ff1dbe481a10063b7f690371ee0a32",
+          "version": "0.6.1"
+        },
+        {
+          "source_revision": "27fb13d057ea9f345009277c9ed914fdbb006dac",
+          "version": "0.7.0"
+        },
+        {
+          "source_revision": "14defb62f02fcaecfb597d5dd8cfbc1223512d0a",
+          "version": "0.8.0"
+        }
+      ],
+      "reason": "Give every identifier in the brief a short gloss where the brief first uses it, and have brief_check.py flag bare ones. Bring the bundled example to the brief."
     }
   },
   "skill:pugh-matrix": {

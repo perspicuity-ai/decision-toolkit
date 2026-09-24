@@ -145,6 +145,27 @@ Record them separately.
 
 Where the destination is another actor, the record names that actor as its outstanding dependency until their acceptance exists, so a handover cannot become a silent stall.
 
+### State the shippable unit as checks
+
+Name a plan's finished product in `Ships as`, in `Current position`, when you register the plan.
+`Ships as` is a numbered list of checks that together show the product is at its destination.
+Give each check one kind.
+
+| Kind | What the check is | Who runs it |
+| --- | --- | --- |
+| `auto` | A command; exit status 0 passes | The loop, in every iteration |
+| `observer` | A named actor outside the author's environment, and what that actor inspects | That actor; the loop records their words |
+
+Write the plan's `Done when` so that it cites `Ships as`: every check passes, every unit is accepted, stopped or transferred, and the close-out is held.
+A `Done when` that counts units alone describes a ledger, not a product, because stopped and transferred units satisfy it when nothing has shipped.
+Keep effects out of `Ships as`.
+An effect, such as people understanding a page or a behaviour changing, needs time or people the work does not control; register it as a [review commitment](#review-commitments).
+Keep ratification out of `Ships as`.
+Put a principal's decision that a check needs in the [pre-run gate](#run-a-plan).
+Size the shippable unit to what the loop can reach under its grants.
+Move a check that the loop cannot reach to a named later plan, and list it under `Later`.
+After Run begins, change `Ships as` only by an amendment the principal ratifies, with the reason in Changes.
+
 ### Review what another actor sent
 
 A review of a return exists because the author of a change cannot observe that the world received it.
@@ -177,7 +198,7 @@ Where the giver's criteria are absent or unregistered, the receiver cannot accep
 
 ### Review a plan
 
-A plan's close-out is held in `Review` mode when every unit is accepted, stopped or transferred, or when the plan stops early.
+Hold a plan's close-out in `Review` mode as the last step of a `finished` loop, or when the principal ends the plan at `stopped`.
 Answer four questions: what was supposed to happen, what happened, why the two differ, and what changes next time.
 Then compute the delegation measures from the unit records.
 
@@ -344,7 +365,7 @@ Keep it thin: what a reader cannot get from the units belongs here, and what the
 
 Use `id`, `revision`, `skill_version`, `updated`, `created_at` and `updated_at` as a record does.
 Use `plan_status` in place of `work_status`, with `not_started`, `active`, `waiting`, `in_review`, `accepted` or `stopped`.
-A plan is `accepted` only when every unit is accepted, stopped or transferred to a named owner.
+A plan is `accepted` only when every `Ships as` check passes and every unit is accepted, stopped or transferred to a named owner.
 Set `next_check` for a timed obligation, exactly as a record does.
 
 ### Units
@@ -374,16 +395,37 @@ A gate is a unit whose acceptance is another unit's condition; a move is a unit 
 
 ### Run a plan
 
+Hold the pre-run gate before `Run` begins.
+List every principal decision, credential, account action and human-only step that a `Ships as` check or a granted unit needs.
+For each item, record the answer, or move the check or unit that needs it to a named later plan.
+Do not start a plan in a loop while a check or unit waits on an item from this list.
+An input that arises during the run is an escalation, not a gate failure.
+
 An actor running a plan in `Run` repeats one loop.
 
 1. Find the eligible units.
 2. Dispatch each with its grant card.
 3. Have each return reviewed by the receiver its grant names, which accepts it, accepts it with conditions or sends it back.
-4. Recompute eligibility.
+4. Close each record whose results its receiver accepted in this iteration and that has no open review commitment.
+5. Run the `auto` checks in `Ships as`, and record the result.
+6. Recompute eligibility.
 
-Stop when every unit is accepted, stopped or transferred; when a batch tolerance the principal set is reached; or when escalations block every remaining unit.
+End the loop at one of three exits, and write the exit and its time in the plan's `Current position` as `Exit:`.
+
+| Exit | Condition | `plan_status` | What the loop writes |
+| --- | --- | --- | --- |
+| `finished` | Every `Ships as` check passes, every unit is accepted, stopped or transferred, and the close-out is held | `accepted`, or `in_review` while a review commitment remains | The close-out, and the closure of each unit record that has no open review commitment |
+| `parked` | The remaining work needs an input that no grant supplies | `waiting` | Each missing input, its owner, and the exact command that resumes the loop |
+| `stopped` | A tolerance the principal set is reached; escalations block every remaining unit; or no unit remains eligible while a `Ships as` check fails | `waiting`; `stopped` when the principal ends the plan | The tolerance, the escalations or the failing check, and who decides next |
+
+A `parked` exit is not a success.
+Report it as the shippable unit not reached, and name the gate item that was missing, or the escalation that arose.
+Resume a parked plan with the same plan and loop file.
+Do not write a new plan or loop file around the remainder.
 An escalation on one unit does not stop units that do not depend on it.
-Then hold the plan's close-out in `Review` ([review a plan](#review-a-plan)).
+Hold the plan's close-out in `Review` ([review a plan](#review-a-plan)) as the last step of `finished`, and when the principal ends a plan at `stopped`.
+The [loop template](../assets/loop-template.md) is one way to write the loop's instructions.
+Adapt it to the project.
 No scheduler is required: the loop describes what the running actor does.
 
 ### Repositories
@@ -401,6 +443,12 @@ For a move, record both sides: what leaves, and where it arrives.
 Name the source, the destination, what must remain reachable afterwards, and what happens to references that crossed the boundary.
 A move is complete when the destination holds the content, the source no longer does, and the references that crossed still resolve.
 Keep the migration evidence in the move's own record, not in the plan.
+
+### One plan for each destination
+
+Keep one active plan for each destination.
+Before you write a plan whose `Ship to` names a destination that an open plan already names, close the open plan with a close-out, or absorb its units into the new plan with a transfer table.
+Put an idea that arrives during a run in the plan's `Later` list, not in `Ships as`.
 
 ### Where a plan lives
 
@@ -539,6 +587,9 @@ Close only after every obligation is fulfilled, explicitly cancelled or transfer
 Account for each result in the work scope, including stopped or superseded ones.
 Set delivery to `in_review`, `accepted` or `stopped` before closure.
 Use `accepted` only when no further obligation remains, so completed delivery does not stay in the open queue.
+Close a record in the step where its receiver accepts its last result, unless a review commitment remains open.
+Do not leave the closure for a later session.
+A record whose results are all accepted and whose `Next` reads none is ready to close, not active.
 Record `Closure` with its actor, date, reason and evidence.
 Add `closed_at` when the closure time is known.
 Preserve unknown benefits if the owner ends observation without resolving them.
@@ -586,6 +637,36 @@ Put a table in the record only when the comparison itself changes the choice.
 A reader should reach the current position and the next action without reading the supporting material.
 Disclose further detail on demand, so an inspection can go deeper without making every reader carry it.
 This threshold is a rule rather than a preference, because brevity loses to thoroughness whenever an uncertain agent chooses between them.
+
+### Write the brief
+
+The principal reads `Current position` first, and often reads nothing else.
+Write it as the brief: what was asked, what matters, what was compared, what was chosen and why, and what the principal owes next.
+Rewrite it at every stop, in every mode, so that it agrees with the sections below it.
+Summarizing a record for a reader means rewriting this section, not writing a second summary elsewhere.
+
+| Slot | Content | When |
+| --- | --- | --- |
+| `Ask` | The principal's request, in their terms | Always |
+| `Objectives` | The fundamental objectives by identifier, one phrase each | Always; for prescribed work, the objectives the work serves |
+| `Options` | The alternatives compared, one phrase each | When alternatives were compared |
+| `Decision` | The state, the choice and its decisive reason | Always |
+| `Reconsider if` | The observation that reopens the choice | When a choice is selected or recommended |
+| `Needs from you` | Each open question for the principal, or `nothing` | Always |
+| `Next` | One actor and one action | Always |
+
+The state fields of the template (`Mode`, owners, scope, `Done when`, `Ship to`, `Work`, `Outcome` and any `Blocked` or `Waiting on`) stay in the brief.
+Keep each line to at most 280 characters, counted as rendered: a link counts its text and not its address.
+Keep the whole section to at most 600 words, which a reader covers in about five minutes.
+Give a slot one line; a slot that holds a list, such as `Ships as` or several questions, counts each item as a line.
+Link detail rather than carry it, and keep tables out of the brief.
+Give every identifier a short gloss where the brief first uses it, as `Objectives` does: `U4 re-measure sitewalk's error rate`, not `U4`.
+A bare identifier points at detail the reader has not read, so a list of units, criteria or choices tells the reader nothing about what the work was decomposed into.
+Write each question under `Needs from you` in the form the skill asks it: two to four options, the recommendation first and marked, each with its consequence.
+
+`python3 scripts/brief_check.py <record or directory>` checks records and plans with `skill_version` 0.8.0 or later.
+It reports each missing required slot, each line over 280 characters, each section over 600 words and each identifier whose first use has no gloss, and exits 1 when any record fails.
+The gloss check is a heuristic: it flags an identifier followed at first use by punctuation, a joining word or another identifier, and accepts one that closes a parenthesis after its description.
 
 ## Resume safely
 
@@ -642,6 +723,10 @@ Add `Blocked`, `Waiting on` or `in_review` when the record is next touched, and 
 An `in_review` record needs a machine-readable `review_due` date as well as `next_check`.
 Records and plans written before 0.6.0 may declare `Accept`, use `picked up` or `returned` as unit states, record the verdict `returned`, or lack `Decided by`, `Reconsider if`, grant cards and an `Accepted by` column.
 Read them as written, and use the 0.6.0 words and fields when the record is next touched.
+Plans written before 0.7.0 may lack `Ships as` and `Exit`, and may define `Done when` by units alone.
+Read them as written, and add `Ships as` and hold the pre-run gate before the plan next enters `Run`.
+Records and plans written before 0.8.0 may lack the brief's slots and limits.
+Read them as written, and write the brief when the record is next touched.
 Preserve historical headings, identities, evidence and authority.
 For an authorized migration, identify the source revision without silently relabeling it.
 No database, graph or scheduler is required by this skill.

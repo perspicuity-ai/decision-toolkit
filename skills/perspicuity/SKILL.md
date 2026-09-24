@@ -2,12 +2,12 @@
 name: perspicuity
 description: >-
   Plan a problem, compare choices, act, and review the result in one evolving record.
-  Use for decision support, for a plan that stops at ratified choices and granted work, for executing that plan, or for reviewing returned work and finished plans.
+  Use for decision support, for exploring an idea before it is a decision, for a plan that stops at ratified choices and granted work, for executing that plan, for reviewing returned work and finished plans, or for summarizing a record into a five-minute brief.
 ---
 
 # Perspicuity
 
-Version: 0.6.0. Record format: `perspicuity-work/1`. Plan format: `perspicuity-plan/1`.
+Version: 0.8.1. Record format: `perspicuity-work/1`. Plan format: `perspicuity-plan/1`.
 
 Advance the principal's intended outcomes through **Frame and Decide, Act, and Review**.
 Let the decider's values guide the problem, alternatives and consequences.
@@ -31,20 +31,27 @@ Read the request and existing record, and identify the intended outcome, actual 
 Reuse settled choices and permission within their scope.
 For prescribed work, proceed in `Run` under its grant without inventing a decision; in `Plan`, register it as a unit.
 For advice or inquiry, complete that scope without forcing a selection.
+For an idea that is not yet a decision, open a `Plan` record and run the [exploration opening](references/analysis.md#explore-an-idea), which stops at a fork the principal chooses.
 Ask for missing input that could materially change the work, and meanwhile continue independent work a current grant covers.
 
 Keep the existing record identity; for a new one, adapt the [record template](assets/record-template.md).
 Name at the start `Done when`, which the author checks, and `Ship to`, which someone outside the author's environment verifies; done is not shipped ([shipping](references/record.md#ship-to-a-named-destination)).
 For units that must happen in an order or span repositories, write a [plan](assets/plan-template.md) that points at their records.
+Name a plan's finished product in `Ships as`, as checks a loop can run or a named outside observer can make, and cite them in its `Done when` ([shippable unit](references/record.md#state-the-shippable-unit-as-checks)).
+Keep one active plan for each destination.
 Read the `format` value first and apply that format's rules.
 Record material events with [clock timestamps](references/record.md#timestamps).
 Keep the finding, decision state and next actor visible: one actor and action in `Next`, and a line for each other pending actor.
+Treat `Current position` as the principal's [brief](references/record.md#write-the-brief), and rewrite it at every stop: the ask, objectives, options, decision with its reason, `Reconsider if`, `Needs from you` and `Next`.
+Keep each line to 280 characters and the section to 600 words, and give every identifier a short gloss where the brief first uses it; `scripts/brief_check.py` counts all three.
 
 ## Who decides what
 
 By default the principal owns the intent, frame, objectives, risk tolerance, hard-to-reverse choices and grants; the agent owns alternatives, evidence, reversible choices inside its grant, and the route.
 A grant may move any of these ([default allocation](references/record.md#who-decides-what)).
 Tag every consequential choice `Decided by:` with the person or agent and its authority.
+Ask the principal for each choice they own as one question with two to four options, your recommendation first and marked, and each option's consequence in one line.
+Use the host's question tool when it has one, otherwise a numbered list, and keep open questions under `Needs from you`.
 
 ## Frame and Decide
 
@@ -61,7 +68,7 @@ Identify material givens, uncertainties and assumptions, with their basis and re
 Develop credible alternatives, including the feasible current course or the reason it is excluded.
 Compare consequences under the decider's constraints and risk preferences, in native measures, with evidence, assumptions and explicit gaps.
 Show the decisive consequences compactly and link the detail; see the [analysis guidance](references/analysis.md) for hard cases.
-Inquire further when its likely value justifies the effort and delay.
+Inquire further when its likely value justifies the effort and delay; [screen](references/analysis.md#explore-an-idea) each question first.
 
 Explain the decisive tradeoff and write `Reconsider if:` beside every selection.
 If a missing preference prevents selection, keep a conditional recommendation or obtain the preference.
@@ -83,7 +90,10 @@ Commit under a grant with `Perspicuity-Record:` and `Perspicuity-Unit:` [trailer
 Escalate when the problem, comparison or selection changes, a tolerance is exceeded, or an excluded target is needed.
 Check uncertain external effects before a retry, and preserve material failures and unresolved effects before correction.
 Mark each result delivered, blocked or stopped before you stop; for a block, name the missing input, its owner and the resolving step.
-To run a whole plan, follow [the run loop](references/record.md#run-a-plan).
+To run a whole plan, hold the pre-run gate and follow [the run loop](references/record.md#run-a-plan), optionally from the [loop template](assets/loop-template.md).
+End every loop as `finished`, `parked` or `stopped`.
+Treat a parked loop as the shippable unit not reached, and resume it in the same plan.
+Close each record in the step where its receiver accepts it.
 
 ## Delegate through this skill
 

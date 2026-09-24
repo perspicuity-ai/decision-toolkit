@@ -95,12 +95,19 @@ def current_format(header):
 
 LABELS = (
     "Mode", "Principal and decider", "Principal", "Decider", "Work owner", "Plan owner", "Decision",
-    "Work scope", "Plan scope", "Done when", "Ship to", "Work", "Outcome", "Next", "Blocked",
+    "Work scope", "Plan scope", "Ships as", "Done when", "Ship to", "Pre-run gate", "Exit", "Work", "Outcome", "Next", "Blocked",
     "Waiting on", "Dependency", "Review due", "Next check", "Budget", "Closure", "Received", "Giver", "Verdict",
 )
 MODES = ("plan", "run", "review", "accept")
 # Records from skill 0.6.0 carry the fields below; earlier records are read as written.
 FIELD_CHECKS_FROM = (0, 6, 0)
+# Plans from skill 0.7.0 name their finished product in Ships as.
+LOOP_CHECKS_FROM = (0, 7, 0)
+# A Next line that says nothing is left, and names no actor: "None.", "none in this batch.", "No further action."
+NOTHING_NEXT = re.compile(
+    r"(?i)(?:none|nothing|no further (?:action|work))(?:[ \t]+(?:further|left|remaining|more))?"
+    r"(?:[ \t]+(?:in|for|on)[ \t]+this\b[^.;]*)?[ \t]*(?:[.;:]|$)")
+URL = re.compile(r"https?://[^\s)>\]`'\"]+")
 GRANT_FIELDS = ("For", "Serves", "Intent", "Done when", "Ship to", "Includes", "Tolerances",
                 "Escalate if", "Return to", "Accepted by", "Granted by")
 FIELD = re.compile(
@@ -373,6 +380,7 @@ def parse_record(text, path):
         "mode": read_mode(body),
         "done_when": body_field(body, "Done when"),
         "ship_to": body_field(body, "Ship to"),
+        "ships_as": body_field(body, "Ships as"),
         "work": body_field(body, "Work"),
         "outcome": body_field(body, "Outcome"),
         "dependency": body_field(body, "Dependency"),
@@ -382,7 +390,7 @@ def parse_record(text, path):
         "next_check_date": None,
         "review_due_date": None,
         "next": body_field(body, "Next"), "issues": [],
-        "skill_version": None, "field_warnings": [],
+        "skill_version": None, "field_warnings": [], "closure_warnings": [],
     }
     if is_plan:
         # A plan declares its repositories and its units; the units keep their own state.
@@ -486,7 +494,48 @@ def parse_record(text, path):
             record["issues"].append(
                 "units name repositories the plan does not declare: " + ", ".join(unknown))
     record["field_warnings"] = field_warnings(record, body, skill_version_tuple(record["skill_version"]))
+    record["closure_warnings"] = closure_warnings(record, skill_version_tuple(record["skill_version"]))
     return record
+
+
+def is_placeholder(value):
+    """A template placeholder such as '<the finished product>', which unspecified() also accepts."""
+    return bool(re.fullmatch(r"<.*>[.]?", value.strip()))
+
+
+def closure_warnings(record, version):
+    """Report what stops a record or plan from finishing. These never fail --check.
+
+    A plan from 0.7.0, or any plan in Run, must name its finished product in Ships as and cite it
+    in Done when. An open record whose Next reads none has finished its work but not closed.
+    """
+    messages = []
+    if record["record_status"] != "open":
+        return messages
+    is_plan = record["kind"] == "plan"
+    if is_plan and ((version is not None and version >= LOOP_CHECKS_FROM) or record["mode"] == "run"):
+        ships_as, done_when = record["ships_as"], record["done_when"]
+        if unspecified(ships_as) and not is_placeholder(ships_as):
+            messages.append("the plan names no Ships as, so a loop cannot tell when it is finished"
+                            if record["mode"] == "run" else "the plan names no Ships as")
+        elif done_when == "unknown":
+            messages.append("the plan names Ships as but has no Done when that cites it")
+        elif not unspecified(done_when) and "ships as" not in done_when.lower():
+            messages.append("the plan's Done when does not cite Ships as")
+    following = record["next"].replace("*", "").strip()
+    if NOTHING_NEXT.match(following) and not unspecified(following):
+        messages.append("Next reads none while the " + ("plan" if is_plan else "record")
+                        + " is open: close it, or name the next actor")
+    return messages
+
+
+def destination_keys(ship_to):
+    """The destinations a Ship to line names: its addresses, else its whole normalised text."""
+    urls = {url.rstrip(".,;:").rstrip("/").lower() for url in URL.findall(ship_to)}
+    if urls:
+        return urls
+    text = " ".join(ship_to.replace("*", "").lower().split()).rstrip(".")
+    return set() if unspecified(text) or is_placeholder(text) else {text}
 
 
 def excluded_component(parts):
@@ -505,6 +554,7 @@ def scan(root, sources=None, as_of=None):
         "coverage": {"markdown_files": 0, "current_records": 0, "other_markdown": 0, "non_markdown": 0},
         "exclusion_policy": sorted(EXCLUDED_DIRS) + ["version/revision/snapshot directories", "symlinks", "outside root"],
         "exclusions": [], "records": [], "issues": [], "warnings": [], "field_warnings": [],
+        "closure_warnings": [],
     }
     visited = set()
 
@@ -585,6 +635,20 @@ def scan(root, sources=None, as_of=None):
             for record in records:
                 record["issues"].append(f"duplicate id {identifier}: {paths}")
     result["records"].sort(key=lambda record: record["path"])
+    # One destination has one active plan.
+    holders = defaultdict(list)
+    for record in result["records"]:
+        if (record["kind"] == "plan" and record["record_status"] == "open"
+                and record["work_status"] not in {"accepted", "stopped"}):
+            for key in destination_keys(record["ship_to"]):
+                holders[key].append(record)
+    for key, records in sorted(holders.items()):
+        if len(records) > 1:
+            for record in records:
+                others = ", ".join(other["path"] for other in records if other is not record)
+                message = f"another open plan ships to {key}: {others}"
+                if message not in record["closure_warnings"]:
+                    record["closure_warnings"].append(message)
     for record in result["records"]:
         checkpoint = record["next_check_date"]
         record["check_status"] = (
@@ -601,6 +665,8 @@ def scan(root, sources=None, as_of=None):
             issue(record["path"], message)
         for message in record["field_warnings"]:
             result["field_warnings"].append({"path": record["path"], "message": message})
+        for message in record["closure_warnings"]:
+            result["closure_warnings"].append({"path": record["path"], "message": message})
     result["coverage"]["current_records"] = len(result["records"])
     result["coverage"]["unclassified_records"] = sum(
         "unclassified" in (record["record_status"], record["work_status"])
@@ -679,6 +745,10 @@ def markdown(result):
         lines.extend(["", "## Field warnings", "",
                       "Fields skill 0.6.0 asks for are missing. These warnings never fail --check."])
         lines.extend(f"- {item['path']}: {item['message']}" for item in result["field_warnings"])
+    if result.get("closure_warnings"):
+        lines.extend(["", "## Closure warnings", "",
+                      "A loop cannot finish these as written. These warnings never fail --check."])
+        lines.extend(f"- {item['path']}: {item['message']}" for item in result["closure_warnings"])
     if any("commits" in record for record in result["records"]):
         lines.extend(["", "## Commits by unit", "",
                       "Read from Perspicuity-Record and Perspicuity-Unit commit trailers."])

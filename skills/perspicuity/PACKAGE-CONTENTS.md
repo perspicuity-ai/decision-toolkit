@@ -1,16 +1,17 @@
-# Package contents for 0.6.0-preview.3
+# Package contents for 0.7.0-preview.3
 
 This early preview contains one user-facing skill, `perspicuity`.
-It supports a person or a delegated agent through Understand, Choose, Act and Review.
+It supports a person or a delegated agent through Frame and Decide, Act and Review.
 One evolving Markdown record carries the context between sessions.
-Selected source revision: `f094d528fed77b77057f46c3c6ff5f2372855d39`.
+Selected source revision: `615aa5cf7682c7e6b65bd254ab5692e980cc4111`.
 
 ## Skill and record
 
-- Skill version: `0.6.0`.
+- Skill version: `0.8.1`.
 - Record format: `perspicuity-work/1`.
 - The format is documented Markdown. No JSON schema or database is required.
-- The entrypoint links to analysis guidance, record guidance, a template, and a fictional example.
+- The entrypoint links to analysis guidance, record guidance, record, plan and loop templates, and a fictional example.
+- `brief_check.py` checks that each record opens with a five-minute brief. It needs only Python's standard library.
 - The optional dashboard shows the selected project's records, tasks, workers and connections.
 - The dashboard requires Python 3.10 or later and PyYAML. Its interface requires no JavaScript build.
 - Marked and DOMPurify render record bodies offline. Their licence files accompany the browser scripts.
@@ -46,4 +47,4 @@ The dashboard runs locally when started. The package supplies no hosted service 
 | --- | --- |
 | glossary | 0.1.5 |
 | licensing | 0.1.1 |
-| skill:perspicuity | 0.6.0 |
+| skill:perspicuity | 0.8.1 |

@@ -1,16 +1,15 @@
-# Changelog for 0.6.0-preview.3
+# Changelog for 0.7.0-preview.3
 
-Source revision: `f094d528fed77b77057f46c3c6ff5f2372855d39`.
-Comparison distribution: `0.5.0`.
+Source revision: `615aa5cf7682c7e6b65bd254ab5692e980cc4111`.
+Comparison distribution: `0.6.0`.
 Record format: `perspicuity-work/1` → `perspicuity-work/1`.
 
 ## Changes in this candidate
 
-- Distribution `0.5.0` → `0.6.0` (breaking). Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly.
-- glossary: `0.1.4` → `0.1.5` (feature). Define plan, the Review mode, done when, ship to, acceptance, tolerance, claim, unit state, short-form choice, plan close-out and commit trailer, and describe the grant as a grant card.
-- skill:perspicuity: `0.5.0` → `0.6.0` (breaking). Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return.
+- Distribution `0.6.0` → `0.7.0` (breaking). Carry skill 0.8.1, which makes plans name their finished product as checks before a run and makes a record's Current position a checked five-minute brief. Both add obligations to existing records and plans, so the distribution declares a breaking component change. The package adds the loop template and the brief check.
+- skill:perspicuity: `0.6.0` → `0.8.1` (feature). Give every identifier in the brief a short gloss where the brief first uses it, and have brief_check.py flag bare ones. Bring the bundled example to the brief.
 
-1 components retain their versions and files.
+2 components retain their versions and files.
 
 ## Recorded version history
 
@@ -19,6 +18,7 @@ Component entries do not establish which earlier distribution included each chan
 
 ### distribution
 
+- `0.7.0` (breaking). Carry skill 0.8.1, which makes plans name their finished product as checks before a run and makes a record's Current position a checked five-minute brief. Both add obligations to existing records and plans, so the distribution declares a breaking component change. The package adds the loop template and the brief check.
 - `0.6.0` (breaking). Carry skill 0.6.0, which adds the Review mode and the grant card and changes how units are granted, returned and accepted, so the distribution declares a breaking component change. The authorship notice now names Laura Keating Elske and David Nelson Elske correctly.
 - `0.5.0` (breaking). Carry skill 0.5.0, which declares a working mode and makes a work unit executable only through a registered grant. The unit ladder and the grant boundary change how authorized work is recorded, so the distribution declares a breaking component change. The dashboard, its launcher and its Python requirements remain outside this package.
 - `0.4.2` (patch). Add the preview download destination and distinguish the three release assets. Document local Codex installation, Linux verification and complete-folder installation for other compatible hosts. Keep skill 0.2.0 unchanged.
@@ -228,6 +228,10 @@ Component entries do not establish which earlier distribution included each chan
 
 ### skill:perspicuity
 
+- `0.8.1` (feature). Give every identifier in the brief a short gloss where the brief first uses it, and have brief_check.py flag bare ones. Bring the bundled example to the brief.
+- `0.8.0` (breaking). Make Current position the principal's five-minute brief, with Ask, Objectives, Options, the decision's reason, Reconsider if and Needs from you, at most 280 characters a line and 600 words, rewritten at every stop and counted by brief_check.py. Ask the principal each choice as one question with two to four options, recommendation first. This local source revision preceded the packaged candidate.
+- `0.7.0` (breaking). Make plans closable by a loop: a plan names its finished product in Ships as, as automatic or observer checks; a pre-run gate collects every principal input before Run; a loop ends finished, parked or stopped; one active plan per destination. Adds the loop template. This local source revision preceded the packaged candidate.
+- `0.6.1` (feature). Add an exploration opening for an idea that is not yet a decision: intent, widened routes, rough numbers, screened kill tests, and a fork the principal chooses. This local source revision preceded the packaged candidate.
 - `0.6.0` (breaking). Add Review as the third working mode, so a session that judges returned work or a finished plan stops at a verdict. Give each unit a grant card a worker can act on alone, with objective identifiers, intent, done when, ship to, tolerances, escalation triggers and a named acceptor. Tag consequential choices with Decided by and Reconsider if, record reversible choices in a short form, separate done from shipped, add plan close-out with delegation measures, and connect commits to their record and unit with trailers. Accept, from 0.5.x, reads as Review of a return.
 - `0.5.3` (feature). Add Accept as a third working mode for a receiver's verdict, a named shipping destination, and the delegation obligation. This local source revision preceded the packaged candidate.
 - `0.5.2` (patch). Add review_due to the plan template and complete the plan format's first run. This local source revision preceded the packaged candidate.

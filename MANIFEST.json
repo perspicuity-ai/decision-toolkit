@@ -1,33 +1,33 @@
 {
-  "version": "0.6.0-preview.3",
+  "version": "0.7.0-preview.3",
   "files": [
     {
       "path": "BUILD-MANIFEST.json",
       "type": "file",
       "executable": false,
-      "sha256": "360119873b0f91d09528d3072482fd89c667e7a98e49a87f26416e2bd96df1f5",
-      "bytes": 4915
+      "sha256": "33b3d9d7a12bb6cc7eb028042c8727e369e4ec3bdddc2d0a833beab6ba79fd27",
+      "bytes": 5150
     },
     {
       "path": "CHANGELOG.md",
       "type": "file",
       "executable": false,
-      "sha256": "2d1d9324a4c8e61d2a02378535ab9fd01c5a25a014c4f822a1bb9872030e4a75",
-      "bytes": 26229
+      "sha256": "d154dbe8908a1083b9caf01bc8840c2f3aa1bf0e47ae7cc0c30ed9f6993c88c3",
+      "bytes": 27182
     },
     {
       "path": "COMPONENT-CHANGES.json",
       "type": "file",
       "executable": false,
-      "sha256": "25a28263a0b2ea8c66d1150c60861cffee8cd016ba079dfed0a264af6bfb97c0",
-      "bytes": 33389
+      "sha256": "e06061dd97162abda73cb7fa72adebda7c01db066880186e8490424125ed620b",
+      "bytes": 35559
     },
     {
       "path": "COMPONENT-VERSIONS.json",
       "type": "file",
       "executable": false,
-      "sha256": "e23fdbd3d6c8af8a4280ce545a2646d6812a2fdeeb39c1ab72aac6c557f72156",
-      "bytes": 3769
+      "sha256": "a8af1744e9edc064dbfd79a9ed9be5d638fd532ddec3c64c6ef557b092adde25",
+      "bytes": 4012
     },
     {
       "path": "CONTEXT.md",
@@ -61,43 +61,43 @@
       "path": "PACKAGE-CONTENTS.md",
       "type": "file",
       "executable": false,
-      "sha256": "56213b1fce94c1e8748550240844a4ec48259733b0ad765e1dad7fb37b9d7f84",
-      "bytes": 2506
+      "sha256": "4a43b749ad1de43217c627dbeafba6161c07be088f1de1fb2da79e646323d30c",
+      "bytes": 2641
     },
     {
       "path": "README.md",
       "type": "file",
       "executable": false,
-      "sha256": "8db858a6d06c8112d26a06e71700eee90c2a495cfd9fbfdbb5c9b3d833eaf464",
-      "bytes": 3115
+      "sha256": "a642887ef2a3311d8a445094aca177a76ba702cde7a60923d9553611e4e76466",
+      "bytes": 3343
     },
     {
       "path": "VERSION",
       "type": "file",
       "executable": false,
-      "sha256": "38b087524cffe78608c8f9b8a5c0fa864354555b789f726ee37c87cd2a56f3fe",
+      "sha256": "011cdf166838054af4738c501eb792c604560f8a65038ebedd09ba6d07655c75",
       "bytes": 16
     },
     {
       "path": "skills/perspicuity/CHANGELOG.md",
       "type": "file",
       "executable": false,
-      "sha256": "2d1d9324a4c8e61d2a02378535ab9fd01c5a25a014c4f822a1bb9872030e4a75",
-      "bytes": 26229
+      "sha256": "d154dbe8908a1083b9caf01bc8840c2f3aa1bf0e47ae7cc0c30ed9f6993c88c3",
+      "bytes": 27182
     },
     {
       "path": "skills/perspicuity/COMPONENT-CHANGES.json",
       "type": "file",
       "executable": false,
-      "sha256": "25a28263a0b2ea8c66d1150c60861cffee8cd016ba079dfed0a264af6bfb97c0",
-      "bytes": 33389
+      "sha256": "e06061dd97162abda73cb7fa72adebda7c01db066880186e8490424125ed620b",
+      "bytes": 35559
     },
     {
       "path": "skills/perspicuity/COMPONENT-VERSIONS.json",
       "type": "file",
       "executable": false,
-      "sha256": "e23fdbd3d6c8af8a4280ce545a2646d6812a2fdeeb39c1ab72aac6c557f72156",
-      "bytes": 3769
+      "sha256": "a8af1744e9edc064dbfd79a9ed9be5d638fd532ddec3c64c6ef557b092adde25",
+      "bytes": 4012
     },
     {
       "path": "skills/perspicuity/CONTEXT.md",
@@ -124,15 +124,15 @@
       "path": "skills/perspicuity/PACKAGE-CONTENTS.md",
       "type": "file",
       "executable": false,
-      "sha256": "56213b1fce94c1e8748550240844a4ec48259733b0ad765e1dad7fb37b9d7f84",
-      "bytes": 2506
+      "sha256": "4a43b749ad1de43217c627dbeafba6161c07be088f1de1fb2da79e646323d30c",
+      "bytes": 2641
     },
     {
       "path": "skills/perspicuity/SKILL.md",
       "type": "file",
       "executable": false,
-      "sha256": "5bcb9e4633fa36505733bfece26d0e55051c7e19e1be106b6a3d3262028a22f7",
-      "bytes": 8841
+      "sha256": "08af84b6b8361c4d4f29b8a65a6f2554941b37cf02defb688b1758451e8c360d",
+      "bytes": 10428
     },
     {
       "path": "skills/perspicuity/assets/dashboard/app.js",
@@ -191,32 +191,39 @@
       "bytes": 29369
     },
     {
+      "path": "skills/perspicuity/assets/loop-template.md",
+      "type": "file",
+      "executable": false,
+      "sha256": "918d634000f649dece16c4b4e516f856890472574b59d87d85fa26f7c6019c55",
+      "bytes": 4074
+    },
+    {
       "path": "skills/perspicuity/assets/plan-template.md",
       "type": "file",
       "executable": false,
-      "sha256": "1e06e4decca90964996f1f205271fc9fdaaabd661b4c77f34ec12d857b4885b5",
-      "bytes": 5371
+      "sha256": "0dea0cfac28562d9919bced346e166a3e5f7ab086629d4ebe77bc74a184bf504",
+      "bytes": 6996
     },
     {
       "path": "skills/perspicuity/assets/record-template.md",
       "type": "file",
       "executable": false,
-      "sha256": "b292d9112c41b57fd5d9f5f94d2926f3ce29a713c4a12b1c4556a3832e41ef0b",
-      "bytes": 7313
+      "sha256": "d2bde4695be33b32160103a29a522a70a3037f43c82ec99640ce65579ae7d3dd",
+      "bytes": 8090
     },
     {
       "path": "skills/perspicuity/examples/pipeline.md",
       "type": "file",
       "executable": false,
-      "sha256": "ad9855225d8e436730824667232db9eb3ec2fcd2101c86dcb2b60f846b72771a",
-      "bytes": 8728
+      "sha256": "fcdf61c5b48cc8a645c82729d0195118a902ec8b11b22d8c1ddb060a873ad6e9",
+      "bytes": 9551
     },
     {
       "path": "skills/perspicuity/references/analysis.md",
       "type": "file",
       "executable": false,
-      "sha256": "3b78e9567193d5742527fd356fd4ddd4717fac2ef62e8f37c73a1f393e9f6307",
-      "bytes": 7596
+      "sha256": "979a1cc455de54ba5ade49320191c3bf2dbc32be4ff4637c97ef490e2a111e40",
+      "bytes": 9488
     },
     {
       "path": "skills/perspicuity/references/dashboard.md",
@@ -236,8 +243,15 @@
       "path": "skills/perspicuity/references/record.md",
       "type": "file",
       "executable": false,
-      "sha256": "98ff923515520792bb7c928459a35547993a6a2fc39789fed710b6cdff9117b5",
-      "bytes": 39878
+      "sha256": "2a1b80908c80d3caa5a9a90473961d2983d734a5258a5abdea53e9886e466ac0",
+      "bytes": 46710
+    },
+    {
+      "path": "skills/perspicuity/scripts/brief_check.py",
+      "type": "file",
+      "executable": false,
+      "sha256": "f0e7f8865f5b1fddd516a0cb69d59d60ddae71bcbe2d2b025a094e37f522f717",
+      "bytes": 5748
     },
     {
       "path": "skills/perspicuity/scripts/dashboard.py",
@@ -285,8 +299,8 @@
       "path": "skills/perspicuity/scripts/perspicuity_dashboard/work.py",
       "type": "file",
       "executable": false,
-      "sha256": "3575cd5a08a286ab640dfa01ac65fd2cd76939d53488bb2242b8fdb61ea7478c",
-      "bytes": 34183
+      "sha256": "8224ad18e8e72bbe489ccc1ce8f4830339bf9454e7d4886a6969129ab2aec39d",
+      "bytes": 38129
     },
     {
       "path": "skills/perspicuity/scripts/requirements.txt",
